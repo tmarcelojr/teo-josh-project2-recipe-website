@@ -24,15 +24,15 @@ server.use(session({
 }))
 
 // ------- CONTROLLERS -----
-const userController = require('./controllers/userController.js')
-server.use('/users', userController)
+// const userController = require('./controllers/userController.js')
+// server.use('/users', userController)
 
-const authController = require('./controllers/authController.js')
-server.use('/auth', authController)
+// const authController = require('./controllers/authController.js')
+// server.use('/auth', authController)
 
 // ------ ROUTES ------
 server.get('/', (req, res) => {
-
+	
 })
 
 server.get('*', (req, res) => {
