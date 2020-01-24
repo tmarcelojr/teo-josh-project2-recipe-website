@@ -12,7 +12,7 @@ const Schema = new mongoose.Schema {
 }
 
 // MODEL
-const User = mongoose.model('User', recipeSchema)
+const User = mongoose.model('User', userSchema)
 
 // EXPORT
 module.exports = User
