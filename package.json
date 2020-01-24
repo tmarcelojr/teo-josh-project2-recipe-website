@@ -1,0 +1,31 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "Teo and Josh recipe website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmarcelojr/teo-josh-project2-recipe-website.git"
+  },
+  "author": "Teo Marcelo & Josh Doyle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tmarcelojr/teo-josh-project2-recipe-website/issues"
+  },
+  "homepage": "https://github.com/tmarcelojr/teo-josh-project2-recipe-website#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-router": "0.0.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.8.9",
+    "nodemon": "^2.0.2",
+    "session": "^0.1.0"
+  }
+}
