@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const recipeSchema = new mongoose.Schema {
+const recipeSchema = new mongoose.Schema({
 	name: String,
 	description: String,
 	category: String,
@@ -10,7 +10,7 @@ const recipeSchema = new mongoose.Schema {
 	creator: { type: Schema.Types.ObjectId, ref: 'User' } ,
 	comments: [ commentSchema ],
 	dateCreated: Date
-}
+})
 
 // MODEL
 const Recipe = mongoose.model('Recipe', recipeSchema)
