@@ -1,7 +1,25 @@
 <%- include('../partials/header.ejs') %>
 
-<h1>This is our user profile page</h1>
+	<h1>This is our user profile page</h1>
 
-<p>Content here</p>
+	<p>Content here</p>
+
+	<div>
+		<p>
+			Username: <%= user.username %>
+		</p>
+		<p>
+			First name: <%= user.firstName %>
+		</p>
+		<p>
+			Last name: <%= user.lastName %>
+		</p>
+		<p>
+			Location: <%= user.location %>
+		</p>
+		<p>
+			Email: <%= user.email %>
+		</p>	
+	</div>
 
 <%- include('../partials/footer.ejs') %>

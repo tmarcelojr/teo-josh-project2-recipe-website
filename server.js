@@ -32,7 +32,7 @@ server.use('/users', userController)
 
 // ------ ROUTES ------
 server.get('/seed', (req, res) => {
-	// const data = reqiure()
+	const data = require('./createData.js')
 	// / loop over array 
 })
 
