@@ -54,7 +54,7 @@ Recipe {
 	comments: [ commentSchema ],
 	dateCreated: Date
 }
-```
+
 Ingredient {
 	name: String,
 	amount: String
@@ -78,7 +78,7 @@ User {
 	socialLinks: [ Strings ],
 	emailAddress: String
 }
-
+```
 
 ## Wireframes
 
