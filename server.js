@@ -24,8 +24,8 @@ server.use(session({
 }))
 
 // ------- CONTROLLERS -----
-// const userController = require('./controllers/userController.js')
-// server.use('/users', userController)
+const userController = require('./controllers/userController.js')
+server.use('/users', userController)
 
 // const authController = require('./controllers/authController.js')
 // server.use('/auth', authController)
@@ -37,7 +37,7 @@ server.get('/seed', (req, res) => {
 })
 
 server.get('/', (req, res) => {
-	res.send('Hello, World!')
+	res.render('index.ejs')
 })
 
 server.get('*', (req, res) => {
