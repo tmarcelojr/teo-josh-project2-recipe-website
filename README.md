@@ -42,6 +42,43 @@ This recipe website is a forum for the public to discover recipes. An account is
 * Users will be able to click on the User that created the recipe and go to the user's profile.
 
 ## Models
+```
+Recipe {
+	name: String,
+	description: String,
+	category: String,
+	ingredients[ ingredientSchema ],
+	instructions: String,
+	imageUrl: String,
+	creator: { type: Schema.Types.ObjectId, ref: 'User' } ,
+	comments: [ commentSchema ],
+	dateCreated: Date
+}
+```
+Ingredient {
+	name: String,
+	amount: String
+}
+
+Comment {
+	text: String,
+	rating: Number,
+	date: Date,
+	imageUrl: String,
+	author: { type: Schema.Types.ObjectId, ref: 'User' }
+}
+
+User {
+	username: String,
+	password: String,
+	firstName: String,
+	lastName: String,
+	imageUrl: String,
+	location: String, 
+	socialLinks: [ Strings ],
+	emailAddress: String
+}
+
 
 ## Wireframes
 
