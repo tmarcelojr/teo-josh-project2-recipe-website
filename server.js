@@ -31,8 +31,13 @@ server.use(session({
 // server.use('/auth', authController)
 
 // ------ ROUTES ------
+server.get('/seed', (req, res) => {
+	// const data = reqiure()
+	// / loop over array 
+})
+
 server.get('/', (req, res) => {
-	
+	res.send('Hello, World!')
 })
 
 server.get('*', (req, res) => {

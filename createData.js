@@ -6,7 +6,11 @@ const mongoose = require('mongoose')
 const User = require('./models/user.js')
 
 // 3. Connect your database and collection name
-const userData = require('./data/user')
+const userData = require('./data/user.js')
+
+console.log('this is our user', User);
+console.log('this is our user data', userData);
+
 const connectionString = process.env.MONGODB_URI
 
 // 4. Open your mongoose connection
@@ -30,7 +34,8 @@ mongoose.connection.on('error', (err) => {
 	console.log(err);
 })
 
-User.create(userData, (err, data) => {
+
+User.insertMany(userData, (err, data) => {
   console.log("added user data")
   // mongoose.connection.close();
 });
