@@ -82,4 +82,46 @@ User {
 
 ## Wireframes
 
+![Recipe home page](https://i.imgur.com/vglWXPx.jpg?1)
+### Recipe Home Page 
+* Search bar and popular recipes being displayed
+
+![Recipe index page](https://i.imgur.com/6ruy3F3.jpg)
+### Recipe Index Page 
+* Displays recipes in order of highest rated
+* Top of page will have filter box for recipe display
+
+![Recipe show page](https://i.imgur.com/fz4D8uv.jpg)
+### Recipe Top of Show Page 
+* Top of page displays recipe name and rating
+* A big picture of recipe will be displayed
+
+![Recipe show page 2](https://i.imgur.com/QmZNBfb.jpg)
+### Recipe Bottom of Show Page 
+* Ingredients will be displayed under recipe photo
+* Instructions will be under ingredients
+* User comments will be displayed after instructions
+* Logged in Users can add comment at the bottom of page
+
+![Comment Box](https://i.imgur.com/o75wQTq.jpg)
+### Comment Box
+* Created comment with any attached photos will be displayed
+* Creator of comment will be displayed - linkable to their profile
+* Logged in users can delete and edit their own comment
+
+![Add comment](https://i.imgur.com/zyVM9y2.jpg)
+### Add comment 
+* Logged in users can type comments in the textarea
+* Ratings will be at the bottom left
+* User can attach picture with their comment
+
+![User Page]( https://i.imgur.com/57Omhon.jpg)
+### User Page SHOW/EDIT/DELETE
+* Profile page of registered users displaying their recipes on the left
+* User's demographics will be located inside a box to the right displaying info and user photo
+* Logged in user will be able to edit demographics and delete account inside user profile box
+
+
+
+
 
