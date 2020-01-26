@@ -1,6 +1,7 @@
+<!-- TODO Josh 1/25/20, 10:07 PM :Update to include ability to change password -->
 <%- include('../partials/header.ejs') %>	
 
-	<form method="POST" action="/auth/register">
+	<form method="POST" action="/users/<%=user._id%>">
 
 	  <div class="form-group">
 	    <label for="firstname">First Name:</label>
@@ -10,13 +11,18 @@
 	    <label for="lastname">Last Name:</label>
 	    <input type="text" id="lastname" name="lastname">
 	  </div>
-	  	  <div class="form-group">
+	  <div class="form-group">
+	    <label for="imageurl">Image url:</label>
+	    <input type="text" id="imageurl" name="imageurl" value="https://i.pravatar.cc/150?u=<%=user._id%>">
+	  </div>
+	  <img src="https://i.pravatar.cc/150?u=<%=user._id%>">
+	  <div class="form-group">
 	    <label for="location">Location:</label>
 	    <input type="text" id="location" name="location">
 	  </div>
 	  <div class="form-group">
 	    <label for="emailaddress">Email Address:</label>
-	    <input type="email" id="emailaddress" name="emailaddress">
+	    <input type="email" id="email" name="email">
 	  </div>
 	  <button type="submit">Save</button>
 	</form>	
