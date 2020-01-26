@@ -40,8 +40,8 @@ server.use(session({
 const userController = require('./controllers/userController.js')
 server.use('/users', userController)
 
-// const authController = require('./controllers/authController.js')
-// server.use('/auth', authController)
+const authController = require('./controllers/authController.js')
+server.use('/auth', authController)
 
 // ------ ROUTES ------
 server.get('/seed', (req, res) => {
@@ -50,7 +50,10 @@ server.get('/seed', (req, res) => {
 })
 
 server.get('/', (req, res) => {
-	res.render('index.ejs')
+
+	res.render('index.ejs',{
+		dialogMessage: ''
+	})
 })
 
 server.get('*', (req, res) => {

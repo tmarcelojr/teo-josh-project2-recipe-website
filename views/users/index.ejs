@@ -1,0 +1,25 @@
+<!-- TODO Josh 1/25/20, 1:55 PM :add pagination -->
+<%- include('../partials/header.ejs') %>
+
+	<h1>This is our user index page</h1>
+
+	<p>Content here</p>
+
+	<table style="width:100%">
+	  <tr style="text-align: left">
+	    <th>User</th>
+	    <th>Location</th>
+	    <th>Email</th>
+	  </tr>
+
+		<% users.forEach((user) => { %>
+        	<tr>
+        		<td><a href='/users/<%=user._id %>'><%= user.firstName %> <%= user.lastName %></a></td>
+        		<td><%= user.location %></td>
+        		<td><%= user.email %></td>	
+        	</tr>
+    	<% }); %>
+
+
+
+<%- include('../partials/footer.ejs') %>

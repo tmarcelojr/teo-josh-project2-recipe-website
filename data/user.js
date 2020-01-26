@@ -24,8 +24,8 @@ module.exports = [
   location: "Gatak",
   imageUrl: "http://dummyimage.com/241x112.bmp/5fa2dd/ffffff"
 }, {
-  username: "iallaway4",
-  password: "H3MlHWa",
+  username: "aa",
+  password: "aa",
   firstName: "Isa",
   lastName: "Allaway",
   email: "iallaway4@disqus.com",
