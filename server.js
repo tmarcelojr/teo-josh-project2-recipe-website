@@ -28,10 +28,14 @@ server.use((req, res, next) => {
 	if(req.session.loggedIn) {
 		res.locals.username = req.session.username
 		res.locals.userId = req.session.userId
+		res.locals.loggedIn = req.session.loggedIn
+		res.locals.recipe = req.session.recipe
 	}
 	else {
+		res.locals.loggedIn = false
 		res.locals.username = false
 		res.locals.userId = undefined
+		res.locals.recipe= undefined
 	}
 	next()
 })

@@ -32,3 +32,7 @@ nav:last-child {
   width: 200px;
   margin: 20px;
 }
+
+#recipe-container {
+  width: 300px;
+}

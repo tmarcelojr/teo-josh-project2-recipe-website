@@ -3,7 +3,7 @@ const router = express.Router()
 const User = require('../models/user')
 const Recipe = require('../models/recipe')
 const Comment = require('../models/comment')
-const requireAuth = require('../lib/requireAuth')
+const isLoggedIn = require('../lib/isLoggedIn')
 
 
 // ------- ROUTES ------
@@ -33,7 +33,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const foundUser = await User.findById(req.params.id)
-    console.log('this is our user', foundUser);
+    // console.log('this is our user', foundUser);
     res.render('users/show.ejs', {
       user: foundUser,
       dialogMessage: req.session.dialogMessage
@@ -44,7 +44,7 @@ router.get('/:id', async (req, res, next) => {
   
 })
 
-router.use(requireAuth)
+router.use(isLoggedIn)
 
 // Delete user
 router.delete('/:id', async (req, res, next) => {
