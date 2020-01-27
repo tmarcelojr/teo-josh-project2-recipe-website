@@ -45,9 +45,8 @@ router.get('/:id', async (req, res, next) => {
 // (Edit) GET Edit form to edit user.
 router.get('/:id/edit', async (req, res, next) => {
   try {
-    console.log("in user edit")
-    const foundUser = User.findById(req.params.id)
-
+    const foundUser = await User.findById(req.params.id)
+    
     res.render("users/edit.ejs", {
       user: foundUser,
       sessionUsername: req.session.username,
@@ -80,15 +79,18 @@ router.get('/:id:edit', async (req, res, next) => {
 })
 
 // (Update) PUT Edit form to post update to user.
-// router.put('/:id', async (req, res, next) => {
-//   try {
-    
-//   } catch(err) {
-//     next(err) 
-//   }
-  
-// })  
+router.put('/:id', async (req, res, next) => {
+  try {
 
+    
+    // clear the session message
+    req.session.dialogMessage = undefined
+
+  } catch(err) {
+    next(err) 
+  }
+  
+})  
 
 // DELETE USER
 router.get('/:id', async (req, res, next) => {
@@ -109,15 +111,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-// // (Destroy) DELETE User from db.
-// router.delete('/:id', async (req, res, next) => {
-//   try {
-    
-//   } catch(err) {
-//     next(err) 
-//   }
-  
-// })  
+
 
 
 

@@ -21,7 +21,8 @@ router.post('/register', async (req, res, next) => {
 	// Get user input
 	console.log("in register create")
 	const requestedUsername = req.body.username
-  const requestedPassword = req.body.password
+	const requestedPassword = req.body.password
+  console.log("requestedUsername", requestedUsername)
 
 	const usernameTaken = await User.findOne({ 
 	    username: requestedUsername
@@ -39,13 +40,14 @@ router.post('/register', async (req, res, next) => {
 	      password: requestedPassword
 	    })
 
+	    console.log("createdUser is ", createdUser)
 	    // Update session
 	    req.session.loggedIn = true
 	    req.session.userId = createdUser._id
 	    req.session.username = createdUser.username
 	    req.session.dialogMessage = "Thanks for signing up, " + createdUser.username + ". " +
 	    							"Please complete your profile."
-	 	console.log("preparing to call user edit")
+
 	    res.redirect(`/users/${createdUser._id}/edit`)
 	  }
 })
