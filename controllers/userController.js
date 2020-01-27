@@ -33,7 +33,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const foundUser = await User.findById(req.session.userId)
-    // console.log('this is our user', foundUser);
+    console.log('this is our user', foundUser);
     res.render('users/show.ejs', {
       user: foundUser,
       dialogMessage: req.session.dialogMessage
@@ -82,6 +82,8 @@ router.get('/:id/edit', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   try {
     const updatedUser = await User.findOneAndUpdate(req.session.userId, req.body, { new: true })
+    console.log('This is our body', req.body);
+    console.log('This is our first name', req.body.firstName);
     res.redirect('/users/show')    
     req.session.dialogMessage = undefined
   } catch(err) {

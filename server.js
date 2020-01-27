@@ -43,6 +43,9 @@ server.use('/users', userController)
 const authController = require('./controllers/authController.js')
 server.use('/auth', authController)
 
+const recipeController = require('./controllers/recipeController.js')
+server.use('/recipes', recipeController)
+
 // ------ ROUTES ------
 
 // Creating user data 

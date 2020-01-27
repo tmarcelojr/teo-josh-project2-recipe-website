@@ -57,7 +57,7 @@ async function seedRecipes(norman){
 			}
 
 			const createdRecipe = await Recipe.create(recipeSeed)
-			mongoose.connection.close();
+			// mongoose.connection.close();
 		}
 	
 	} catch(err) {
