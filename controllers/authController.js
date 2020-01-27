@@ -29,6 +29,7 @@ router.post('/register', async (req, res, next) => {
 	  })
 
 	  if(usernameTaken) { 
+	  	console.log("Username is taken");
 	    req.session.dialogMessage = `Username ${requestedUsername} already taken. Please choose a new one.`
 	    res.redirect('/auth/register')
 	  }
@@ -52,7 +53,7 @@ router.post('/register', async (req, res, next) => {
 	  }
 })
 
-// LOGIN AUTH
+// Login auth
 router.post('/login', async (req, res, next) => {
   const user = await User.findOne({ username: req.body.username })
   if(!user) {

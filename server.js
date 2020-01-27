@@ -44,6 +44,8 @@ const authController = require('./controllers/authController.js')
 server.use('/auth', authController)
 
 // ------ ROUTES ------
+
+// Creating user data 
 server.get('/seed', (req, res) => {
 	const data = require('./createData.js')
 	// / loop over array 
