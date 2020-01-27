@@ -1,5 +1,13 @@
 module.exports = [
   {
+  username: "pn",
+  password: "pn",
+  firstName: "Pet",
+  lastName: "Normanville",
+  email: "pnormanville8@arstechnica.com",
+  location: "Paranavaí",
+  imageUrl: "http://dummyimage.com/235x245.jpg/5fa2dd/ffffff"
+}, {
   username: "bb",
   password: "bb",
   firstName: "Virgil",
@@ -55,14 +63,6 @@ module.exports = [
   email: "agravenor7@ask.com",
   location: "Lengkongbarang",
   imageUrl: "http://dummyimage.com/204x102.jpg/dddddd/000000"
-}, {
-  username: "pnormanville8",
-  password: "S7RuT1wv",
-  firstName: "Pet",
-  lastName: "Normanville",
-  email: "pnormanville8@arstechnica.com",
-  location: "Paranavaí",
-  imageUrl: "http://dummyimage.com/235x245.jpg/5fa2dd/ffffff"
 }, {
   username: "gbreazeall9",
   password: "anGMC0FU",

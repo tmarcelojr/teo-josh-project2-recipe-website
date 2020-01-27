@@ -4,12 +4,11 @@ const mongoose = require('mongoose')
 
 // 2. Require your model (and possibly your extra data source);
 const User = require('./models/user.js')
+const Recipe = require('./models/recipe.js')
 
 // 3. Connect your database and collection name
 const userData = require('./data/user.js')
-
-console.log('this is our user', User);
-console.log('this is our user data', userData);
+const recipeData1 = require('./data/recipeSeed1.js')
 
 const connectionString = process.env.MONGODB_URI
 
@@ -34,8 +33,36 @@ mongoose.connection.on('error', (err) => {
 	console.log(err);
 })
 
+async function seedUsers(){
+	try {
+		const createdUsers = await User.insertMany(userData)
+		const norman = await User.find({ username: "pn" })
 
-User.insertMany(userData, (err, data) => {
-  console.log("added user data")
-  // mongoose.connection.close();
-});
+		seedRecipes(norman)				
+	
+	} catch(err) {
+		console.log("this is the error", err)
+	}
+}
+
+async function seedRecipes(norman){
+	try {
+		for (let i = recipeData1.length - 1; i >= 0; i--) {
+			const recipeSeed = {
+				name: recipeData1[i].name,
+				category: recipeData1[i].tags.join(),
+				ingredients: recipeData1[i].ingredients.join(),
+				instructions: recipeData1[i].instructions,	
+				creator: norman[0]._id
+			}
+
+			const createdRecipe = await Recipe.create(recipeSeed)
+			mongoose.connection.close();
+		}
+	
+	} catch(err) {
+		console.log("this is the error", err)
+	}
+}
+
+seedUsers()
