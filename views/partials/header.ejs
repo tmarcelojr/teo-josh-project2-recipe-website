@@ -2,12 +2,88 @@
 <html>
 <head>
 	<title>Recipe Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-	<a href="/">Home</a> |
-	<a href="/users/:d">Profile</a> |
-	<a href="#">Login</a> |
-	<a href="#">Logout</a>
-	<a href="/auth/register">Register</a>
+	<header>
+		<nav>
+			<a href="/">Home</a> |
+			<a href="/users/:d">Profile</a>
+		</nav>
+		<nav>
+			<% if (username !== false) { -%>
+	        You are logged in as <%= username %>        
+	        <a href="/auth/logout">(Log out)</a>
+	      <% } else { -%>
+	         <!-- Trigger login modal-->
+				<a href="" data-toggle="modal" data-target="#login-modal"> Login </a> |   
+				<!-- Trigger register modal-->
+	        <a href="" data-toggle="modal" data-target="#register-modal">Register</a>
+	      <% } -%>
+		</nav>
 
-	<p id=dialogMessage><%= dialogMessage %>
+		<!-- Login modal -->
+		<div id="login-modal" class="modal fade" role="dialog">
+			<div class="modal-sm">
+				<!-- Login modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Login</h4>
+					</div>
+					<div class="modal-body">
+						<form method="POST" action="/auth/login">
+							<div>
+								<label for="username">Username</label>
+								<input id="username" type="text" name="username" placeholder="Enter username here...">
+							</div>
+							<div>
+								<label for="password">Password</label>
+								<input id="password" type="text" name="password" placeholder="Enter password here...">
+							</div>
+							<button>Log in</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>				
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Register modal -->
+		<div id="register-modal" class="modal fade" role="dialog">
+			<div class="modal-sm">
+
+				<!-- Register modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Register</h4>
+					</div>
+					<div class="modal-body">
+						<form method="POST" action="/auth/register">
+							<div>
+								<label for="username">Username</label>
+								<input id="username" type="text" name="username" placeholder="Enter username here...">
+							</div>
+							<div>
+								<label for="password">Password</label>
+								<input id="password" type="text" name="password" placeholder="Enter password here...">
+							</div>
+							<button>Register</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>				
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+<a href="/auth/register">register here</a>

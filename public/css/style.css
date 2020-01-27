@@ -1,0 +1,20 @@
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav {
+  display: inline-block;
+}
+
+nav:last-child {
+  text-align: right;
+}
+
+.modal-sm {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}

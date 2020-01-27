@@ -16,6 +16,13 @@ server.use(express.static('public'))
 server.use(bodyParser.urlencoded({ extended: false }))
 server.use(methodOverride('_method'))
 
+// ------ SESSION ------
+server.use(session({
+	secret: process.env.SESSION_SECRET,
+	resave: false,
+	saveUninitialized: false
+}))
+
 // CUSTOM MIDDLEWARE FOR USERNAME AND USERID
 server.use((req, res, next) => {
 	if(req.session.loggedIn) {
@@ -28,13 +35,6 @@ server.use((req, res, next) => {
 	}
 	next()
 })
-
-// ------ SESSION ------
-server.use(session({
-	secret: process.env.SESSION_SECRET,
-	resave: false,
-	saveUninitialized: false
-}))
 
 // ------- CONTROLLERS -----
 const userController = require('./controllers/userController.js')

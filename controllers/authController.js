@@ -21,7 +21,7 @@ router.post('/register', async (req, res, next) => {
 	// Get user input
 	console.log("in register create")
 	const requestedUsername = req.body.username
-  	const requestedPassword = req.body.password
+  const requestedPassword = req.body.password
 
 	const usernameTaken = await User.findOne({ 
 	    username: requestedUsername
@@ -50,7 +50,38 @@ router.post('/register', async (req, res, next) => {
 	  }
 })
 
+// LOGIN AUTH
+router.post('/login', async (req, res, next) => {
+  const user = await User.findOne({ username: req.body.username })
+  if(!user) {
+    req.session.message = "Invalid username or password."  
+    res.redirect('/')
+  }
+  else {
+    if(user.password == req.body.password) {
+      req.session.loggedIn = true
+      req.session.userId = user._id
+      req.session.username = user.username
+      console.log('Successfully logged in as', user.username );
+      res.redirect('/')
+    }
+    else {
+      req.session.message = "Invalid username or password."
+      res.redirect('/')
+    }
+  }
+})
 
+// Logout current user
+router.get('/logout', async (req, res, next) => {
+	try {
+		console.log('Successfully logged out');
+		await req.session.destroy()
+		res.redirect('/')
+	} catch(err) {
+		next(err)
+	}
+})
 
 
 
