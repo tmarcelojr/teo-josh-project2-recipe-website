@@ -46,6 +46,18 @@ router.get('/:id', async (req, res, next) => {
 
 router.use(requireAuth)
 
+// Delete user
+router.delete('/:id', async (req, res, next) => {
+  try {
+    await User.findByIdAndRemove(req.params.id)
+    await req.session.destroy()
+    res.redirect('/')
+    console.log('Successfuly deleted user.');
+  } catch(err) {
+    next(err)
+  }
+})
+
 // (Edit) GET Edit form to edit user.
 router.get('/:id/edit', async (req, res, next) => {
   try {
@@ -77,24 +89,7 @@ router.put('/:id', async (req, res, next) => {
   }
 }) 
 
-// Delete user
-router.get('/:id', async (req, res, next) => {
-  try {
-    // delete recipes/comments/ratings first
-    // will make an if statement to give user the choice to delete
-    // their recipes
-    await Recipe.remove({ user: req.params.id })
-    await Comment.remove({ user: req.params.id })
-    // we don't have a rating model. Are we going to create a rating
-    // model if we are going to let User have the choice to leave or
-    // delete rating
-    await Rating.remove({ user: req.params.id })
-    await User.findByIdAndRemove(req.params.id)
-    res.redirect('/')
-  } catch(err) {
-    next(err)
-  }
-})
+
 
 
 
