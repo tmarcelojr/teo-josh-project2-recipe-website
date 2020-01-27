@@ -18,5 +18,18 @@ router.get('/', async (req, res, next) => {
 	}
 })
 
+// Show page
+router.get('/:id', async (req, res, next) => {
+	try {
+		const foundRecipe = await Recipe.findById(req.params.id)
+		res.render('recipes/show.ejs', {
+			dialogMessage: req.session.dialogMessage,
+			recipe: foundRecipe
+		})
+	} catch(err) {
+		next(err)
+	}
+})
+
 // Export
 module.exports = router
