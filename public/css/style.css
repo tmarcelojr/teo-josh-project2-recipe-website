@@ -18,3 +18,21 @@ nav:last-child {
   transform: translate(-50%, -50%);
   overflow: hidden;
 }
+
+#recipe-box-container {
+  display: inline-block;
+
+}
+
+.recipe-box {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 10px;
+  height: 300px;
+  width: 200px;
+  margin: 20px;
+}
+
+#recipe-container {
+  width: 300px;
+}

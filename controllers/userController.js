@@ -3,7 +3,7 @@ const router = express.Router()
 const User = require('../models/user')
 const Recipe = require('../models/recipe')
 const Comment = require('../models/comment')
-const requireAuth = require('../lib/requireAuth')
+const isLoggedIn = require('../lib/isLoggedIn')
 
 
 // ------- ROUTES ------
@@ -32,7 +32,7 @@ router.get('/', async (req, res, next) => {
 // (Show) GET one user.
 router.get('/:id', async (req, res, next) => {
   try {
-    const foundUser = await User.findById(req.session.userId)
+    const foundUser = await User.findById(req.params.id)
     // console.log('this is our user', foundUser);
     res.render('users/show.ejs', {
       user: foundUser,
@@ -44,7 +44,7 @@ router.get('/:id', async (req, res, next) => {
   
 })
 
-router.use(requireAuth)
+router.use(isLoggedIn)
 
 // Delete user
 router.delete('/:id', async (req, res, next) => {
@@ -82,6 +82,8 @@ router.get('/:id/edit', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   try {
     const updatedUser = await User.findOneAndUpdate(req.session.userId, req.body, { new: true })
+    console.log('This is our body', req.body);
+    console.log('This is our first name', req.body.firstName);
     res.redirect('/users/show')    
     req.session.dialogMessage = undefined
   } catch(err) {

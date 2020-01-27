@@ -1,0 +1,22 @@
+<%- include('../partials/header.ejs') %>
+
+	<h1>Recipe show page</h1>
+	<div id="recipe-container">
+		<textarea disabled>
+			<%= recipe.ingredients %>
+		</textarea>
+		<textarea disabled>
+			<%= recipe.instructions %>
+		</textarea>	
+
+	<% if(loggedIn && userId == recipe.creator) { %>
+		<a href="/recipes/<%= recipe._id %>/edit">Edit recipe</a> |
+		<a href="">Delete recipe</a>
+	<% } %>
+	</div>
+
+	<input type="hidden" name="recipeCreatorId" value="<%= recipe.creator %>">
+
+
+
+<%- include('../partials/footer.ejs') %>

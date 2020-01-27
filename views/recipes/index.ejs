@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs') %>
+
+	<h1>Recipe index page</h1>
+	<a href="">
+		
+	</a>
+	<div id="recipe-box-container">
+		<% recipe.forEach((recipe)=> { %>
+			<div class="recipe-box">
+				<p>
+					Name: <%= recipe.name %>
+				</p>
+				<p>
+					Category: <%= recipe.category %>
+				</p>
+				<p>
+					Creator: <a href="/users/<%= recipe.creator.id %>"><%= recipe.creator.username %></a>
+				</p>			
+				<a href="/recipes/<%= recipe._id %>">show recipe</a>
+			</div>
+		<% }) %>
+	</div>
+
+
+<%- include('../partials/footer.ejs') %>
