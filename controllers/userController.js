@@ -32,7 +32,7 @@ router.get('/', async (req, res, next) => {
 // (Show) GET one user.
 router.get('/:id', async (req, res, next) => {
   try {
-    const foundUser = await User.findById(req.session.userId)
+    const foundUser = await User.findById(req.params.id)
     console.log('this is our user', foundUser);
     res.render('users/show.ejs', {
       user: foundUser,

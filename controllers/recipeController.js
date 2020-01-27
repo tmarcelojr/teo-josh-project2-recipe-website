@@ -7,7 +7,7 @@ const Recipe = require('../models/recipe')
 // Index page
 router.get('/', async (req, res, next) => {
 	try {
-		const foundRecipes = await Recipe.find({})
+		const foundRecipes = await Recipe.find().populate('creator')
 		console.log('Found recipes', foundRecipes);
 		res.render('recipes/index.ejs', {
 			dialogMessage: req.session.dialogMessage,

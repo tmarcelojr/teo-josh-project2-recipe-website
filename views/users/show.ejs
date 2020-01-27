@@ -21,10 +21,11 @@
 			Email: <%= user.email %>
 		</p>	
 	</div>
-
+	<% if (username !== false) { -%>
 	<a href="/users/<%= user._id %>/edit">EDIT Profile</a>
 	<form method="POST" action="/users/<%= user._id %>?_method=delete">
    	<button class="btn btn-lg btn-info">Delete <%= user.username %></button>
-   </form>  
+   </form>
+   <% } %>
 
 <%- include('../partials/footer.ejs') %>

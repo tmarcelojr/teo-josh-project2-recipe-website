@@ -1,6 +1,9 @@
 <%- include('../partials/header.ejs') %>
 
 	<h1>Recipe index page</h1>
+	<a href="">
+		
+	</a>
 	<div id="recipe-box-container">
 		<% recipe.forEach((recipe)=> { %>
 			<div class="recipe-box">
@@ -11,21 +14,11 @@
 					Category: <%= recipe.category %>
 				</p>
 				<p>
-					Creator: <%= recipe.creator %>
+					Creator: <a href="/users/<%= recipe.creator.id %>"><%= recipe.creator.username %></a>
 				</p>			
 			</div>
 		<% }) %>
 	</div>
 
+
 <%- include('../partials/footer.ejs') %>
-
-
-<!-- 	name: String,
-	description: String,
-	category: String,
-	ingredients: String,
-	instructions: String,
-	imageUrl: String,
-	creator: { type: Schema.Types.ObjectId, ref: 'User' } ,
-	comments: [ commentSchema.schema],
-	dateCreated: Date -->
