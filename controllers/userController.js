@@ -32,15 +32,19 @@ router.get('/', async (req, res, next) => {
 // (Show) GET one user.
 router.get('/:id', async (req, res, next) => {
   try {
-    
+    const foundUser = await User.findById(req.session.userId)
+    // console.log('this is our user', foundUser);
+    res.render('users/show.ejs', {
+      user: foundUser,
+      dialogMessage: req.session.dialogMessage
+    })
   } catch(err) {
       next(err) 
   }
   
-})  
+})
 
-// --- Routes below require authorization. TODO Josh 1/25/20, 11:17 AM :Add auth controller later.
-// router.use(requireAuth)
+router.use(requireAuth)
 
 // (Edit) GET Edit form to edit user.
 router.get('/:id/edit', async (req, res, next) => {
@@ -62,37 +66,18 @@ router.get('/:id/edit', async (req, res, next) => {
   }
 })
 
-router.use(requireAuth)
-
-// We probably wont' need a router for edit that page if we are 
-// letting the user edit their profile page on the profile box 
-// I created it just in case we decided not to go with the idea
-router.get('/:id:edit', async (req, res, next) => {
-  try {
-    const foundUser = await User.findById(req.session.userId)
-    res.render('users/edit.ejs', {
-      user: foundUser
-    })
-  } catch(err) {
-    next(err)
-  }
-})
-
 // (Update) PUT Edit form to post update to user.
 router.put('/:id', async (req, res, next) => {
   try {
-
-    
-    // clear the session message
+    const updatedUser = await User.findOneAndUpdate(req.session.userId, req.body, { new: true })
+    res.redirect('/users/show')    
     req.session.dialogMessage = undefined
-
   } catch(err) {
-    next(err) 
+    next(err)
   }
-  
-})  
+}) 
 
-// DELETE USER
+// Delete user
 router.get('/:id', async (req, res, next) => {
   try {
     // delete recipes/comments/ratings first

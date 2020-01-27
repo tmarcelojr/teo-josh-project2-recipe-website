@@ -11,17 +11,17 @@
 	<header>
 		<nav>
 			<a href="/">Home</a> |
-			<a href="/users/:d">Profile</a>
 		</nav>
 		<nav>
 			<% if (username !== false) { -%>
-	        You are logged in as <%= username %>        
-	        <a href="/auth/logout">(Log out)</a>
-	      <% } else { -%>
-	         <!-- Trigger login modal-->
-				<a href="" data-toggle="modal" data-target="#login-modal"> Login </a> |   
-				<!-- Trigger register modal-->
-	        <a href="" data-toggle="modal" data-target="#register-modal">Register</a>
+		      	You are logged in as <%= username %>  |      
+					<a href="/users/:d">Profile</a> |
+		      	<a href="/auth/logout">Log out</a>
+		      <% } else { -%>
+		         <!-- Trigger login modal-->
+					<a href="" data-toggle="modal" data-target="#login-modal"> Login </a> |   
+					<!-- Trigger register modal-->
+		        <a href="" data-toggle="modal" data-target="#register-modal">Register</a>
 	      <% } -%>
 		</nav>
 
