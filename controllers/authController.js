@@ -58,7 +58,7 @@ router.post('/login', async (req, res, next) => {
   const user = await User.findOne({ username: req.body.username })
   if(!user) {
     req.session.message = "Invalid username or password."  
-    res.redirect('/')
+    res.redirect('back')
   }
   else {
     if(user.password == req.body.password) {
@@ -66,11 +66,11 @@ router.post('/login', async (req, res, next) => {
       req.session.userId = user._id
       req.session.username = user.username
       console.log('Successfully logged in as', user.username );
-      res.redirect('/')
+      res.redirect('back')
     }
     else {
       req.session.message = "Invalid username or password."
-      res.redirect('/')
+      res.redirect('back')
     }
   }
 })
