@@ -74,6 +74,10 @@ router.put('/:id', isLoggedIn, async (req, res, next) => {
 // Delete user
 router.delete('/:id', isLoggedIn, async (req, res, next) => {
   try {
+    // const deleteRecipes =
+    // if( deleteRecipes ==  "on" ){
+    //   console.log('delete recipes by this user');
+    // }
     await User.findByIdAndRemove(req.params.id)
     await req.session.destroy()
     res.redirect('/')

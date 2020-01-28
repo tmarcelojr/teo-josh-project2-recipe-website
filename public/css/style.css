@@ -31,6 +31,7 @@ nav:last-child {
   height: 300px;
   width: 200px;
   margin: 20px;
+  cursor: pointer;
 }
 
 #recipe-container {
