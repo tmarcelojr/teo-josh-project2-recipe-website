@@ -3,5 +3,9 @@
 <h1>This is our index page</h1>
 
 <p>Search bar goes here</p>
+<form method="POST" action="/recipes">
+	<input type="text" name="text" placeholder="Search for recipes">
+	<button>Search</button>
+</form>
 
 <%- include('./partials/footer.ejs') %>
