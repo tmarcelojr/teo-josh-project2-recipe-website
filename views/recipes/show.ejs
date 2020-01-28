@@ -15,7 +15,36 @@
 	<% } %>
 	</div>
 
-	<input type="hidden" name="recipeCreatorId" value="<%= recipe.creator %>">
+	<hr>
+
+	  <h4>Discuss</h4>
+	  <form method="POST" action="/comments/<%= recipe._id %>">
+	  	<!-- TODO Josh 1/27/20, 9:05 PM :if loggedin default user name to logged in user -->
+	    <fieldset>
+	      <input type="text" name="name" placeholder="your name" />
+	    </fieldset>
+	    <fieldset>
+	      <textarea name="commentText" placeholder="Whatcha think?"></textarea>    
+	    </fieldset>
+	    <button>Add Comment</button>
+	  </form>
+
+	  <ul style="margin-top: 20px">
+	    <% for (let i = 0; i < recipe.comments.length; i++) { -%>
+	      <li>
+	        <p>
+	          <small>
+	            <%= recipe.comments[i].name %> 
+	            @ 
+	            <%= recipe.comments[i].date.toLocaleString() %> 
+	          </small>
+	          <br>
+	          <%= recipe.comments[i].text %>        
+	        </p>
+	      </li>
+	    <% } -%>
+	  </ul>
+	<hr>
 
 
 

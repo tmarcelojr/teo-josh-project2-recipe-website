@@ -9,6 +9,7 @@
 
 
 # Comments
+* TODO: allow non users to make comments. But if user is logged in default their name on the comment.
 * Index - haven't started
 * Show - haven't started
 * Delete - haven't started
@@ -22,6 +23,7 @@
 		show checkbox to select delete of recipes, comments, profile.
 		if they select all - destroy
 		if they select to leave something then update the recipe/comment user to the anonymous user
+		Hash password
 
 * Index - renders but not styled. Don't show anonymous user.
 * Show - renders but not styled
@@ -37,6 +39,7 @@
 * needs file clean up for line return
 	- remove <hr>
 	- move returns after commas
+	- add anonymous user
 
 # Other
 * need to add authorization per function

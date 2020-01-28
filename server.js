@@ -50,6 +50,9 @@ server.use('/auth', authController)
 const recipeController = require('./controllers/recipeController.js')
 server.use('/recipes', recipeController)
 
+const commentController = require('./controllers/commentController.js')
+server.use('/comments', commentController)
+
 // ------ ROUTES ------
 
 // Creating user data 

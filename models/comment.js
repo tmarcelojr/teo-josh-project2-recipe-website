@@ -5,9 +5,12 @@ const Schema = mongoose.Schema
 const commentSchema = new mongoose.Schema ({
 	text: String,
 	rating: Number,
-	date: Date,
 	imageUrl: String,
-	author: { type: Schema.Types.ObjectId, ref: 'User' }
+	name: String,
+	date: {
+	    type: Date,
+	    default: Date.now
+  }
 })
 
 // MODEL

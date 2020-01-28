@@ -12,7 +12,10 @@ const recipeSchema = new mongoose.Schema({
 	instructions: String,
 	imageUrl: String,
 	creator: { type: Schema.Types.ObjectId, ref: 'User' } ,
-	comments: [ commentSchema.schema],
+	comments: [{
+    	type: mongoose.Schema.Types.ObjectId,
+    	ref: 'Comment'
+  	}],
 	dateCreated: Date
 })
 
