@@ -10,16 +10,45 @@ const loadRecipe = require('../lib/loadRecipe')
 // Index page
 router.get('/', async (req, res, next) => {
 	try {
-		const foundRecipes = await Recipe.find().populate('creator')
-		// console.log('Found recipes', foundRecipes);
-		res.render('recipes/index.ejs', {
-			dialogMessage: req.session.dialogMessage,
-			recipe: foundRecipes
-		})
+			const foundRecipes = await Recipe.find().populate('creator')
+			// console.log('Found recipes', foundRecipes);
+			res.render('recipes/index.ejs', {
+				dialogMessage: req.session.dialogMessage,
+				recipe: foundRecipes
+			})
 	} catch(err) {
 		next(err)
 	}
 })
+
+// Recipe search bar
+router.post('/', async (req, res, next) => {
+	try {
+		const target = req.body.text
+		const foundRecipes = await Recipe.find().or([
+		{
+			"name": { $regex: target, $options: "i" }
+		},
+		{
+			"category": { $regex: target, $options: "i" }
+		},
+		{
+			"ingredients": { $regex: target, $options: "i" }
+		},
+		{
+			"instructions": { $regex: target, $options: "i" }
+		},
+		{
+			"description": { $regex: target, $options: "i" }
+		}
+		])
+		console.log('this is all recipes with ingredient', foundRecipes);
+		res.send(req.body.text)
+	} catch(err) {
+		next(err)
+	}
+})
+
 
 // New recipe page (added before show page to avoid cast error)
 // Passed in middleware isLoggedIn
