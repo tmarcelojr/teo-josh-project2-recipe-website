@@ -23,11 +23,7 @@ router.get('/', async (req, res, next) => {
   catch(err) {
       next(err) 
   }
-  
 })  
-
-// (New) GET New form to enter new user. NOTE This must come before routes that display user (uses id).
-// In authController
 
 // (Show) GET one user.
 router.get('/:id', async (req, res, next) => {
@@ -47,7 +43,7 @@ router.get('/:id', async (req, res, next) => {
 router.use(isLoggedIn)
 
 // Delete user
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', isLoggedIn, async (req, res, next) => {
   try {
     await User.findByIdAndRemove(req.params.id)
     await req.session.destroy()
@@ -59,7 +55,7 @@ router.delete('/:id', async (req, res, next) => {
 })
 
 // (Edit) GET Edit form to edit user.
-router.get('/:id/edit', async (req, res, next) => {
+router.get('/:id/edit', isLoggedIn, async (req, res, next) => {
   try {
     const foundUser = await User.findById(req.params.id)
     
@@ -79,21 +75,17 @@ router.get('/:id/edit', async (req, res, next) => {
 })
 
 // (Update) PUT Edit form to post update to user.
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', isLoggedIn, async (req, res, next) => {
   try {
     const updatedUser = await User.findOneAndUpdate(req.session.userId, req.body, { new: true })
     console.log('This is our body', req.body);
     console.log('This is our first name', req.body.firstName);
-    res.redirect('/users/show')    
+    res.redirect(`/users/${req.session.userId}`)    
     req.session.dialogMessage = undefined
   } catch(err) {
     next(err)
   }
 }) 
-
-
-
-
 
 
 

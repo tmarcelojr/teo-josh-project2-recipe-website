@@ -3,30 +3,46 @@
 	<h1>This is our user profile page</h1>
 
 	<p>Content here</p>
-
 	<% if (username !== false) { -%>
+		<div>
+			<p>
+				Username: <%= user.username %>
+			</p>
+			<p>
+				First name: <%= user.firstName %>
+			</p>
+			<p>
+				Last name: <%= user.lastName %>
+			</p>
+			<p>
+				Location: <%= user.location %>
+			</p>
+			<p>
+				Email: <%= user.email %>
+			</p>	
+	</div>
 	<a href="/users/<%= user._id %>/edit">EDIT Profile</a>
 	<form method="POST" action="/users/<%= user._id %>?_method=delete">
    	<button class="btn btn-lg btn-info">Delete <%= user.username %></button>
    </form>
    <% } else { %>
-   		<div>
-		<p>
-			Username: <%= user.username %>
-		</p>
-		<p>
-			First name: <%= user.firstName %>
-		</p>
-		<p>
-			Last name: <%= user.lastName %>
-		</p>
-		<p>
-			Location: <%= user.location %>
-		</p>
-		<p>
-			Email: <%= user.email %>
-		</p>	
-	</div>
+   	<div>
+			<p>
+				Username: <%= user.username %>
+			</p>
+			<p>
+				First name: <%= user.firstName %>
+			</p>
+			<p>
+				Last name: <%= user.lastName %>
+			</p>
+			<p>
+				Location: <%= user.location %>
+			</p>
+			<p>
+				Email: <%= user.email %>
+			</p>	
+		</div>
    <% } %>
 
 <%- include('../partials/footer.ejs') %>
