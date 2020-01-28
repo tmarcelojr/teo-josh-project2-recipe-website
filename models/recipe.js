@@ -1,8 +1,5 @@
 const mongoose = require('mongoose')
-const ingredientSchema = require('./ingredient')
 const commentSchema = require('./comment')
-
-const Schema = mongoose.Schema
 
 const recipeSchema = new mongoose.Schema({
 	name: String,
@@ -11,7 +8,7 @@ const recipeSchema = new mongoose.Schema({
 	ingredients: String,
 	instructions: String,
 	imageUrl: String,
-	creator: { type: Schema.Types.ObjectId, ref: 'User' } ,
+	creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' } ,
 	comments: [{
     	type: mongoose.Schema.Types.ObjectId,
     	ref: 'Comment'
