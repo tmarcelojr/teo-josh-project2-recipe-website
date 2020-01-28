@@ -40,20 +40,6 @@ router.get('/:id', async (req, res, next) => {
   
 })
 
-router.use(isLoggedIn)
-
-// Delete user
-router.delete('/:id', isLoggedIn, async (req, res, next) => {
-  try {
-    await User.findByIdAndRemove(req.params.id)
-    await req.session.destroy()
-    res.redirect('/')
-    console.log('Successfuly deleted user.');
-  } catch(err) {
-    next(err)
-  }
-})
-
 // (Edit) GET Edit form to edit user.
 router.get('/:id/edit', isLoggedIn, async (req, res, next) => {
   try {
@@ -87,7 +73,17 @@ router.put('/:id', isLoggedIn, async (req, res, next) => {
   }
 }) 
 
-
+// Delete user
+router.delete('/:id', isLoggedIn, async (req, res, next) => {
+  try {
+    await User.findByIdAndRemove(req.params.id)
+    await req.session.destroy()
+    res.redirect('/')
+    console.log('Successfuly deleted user.');
+  } catch(err) {
+    next(err)
+  }
+})
 
 // EXPORT
 module.exports = router
