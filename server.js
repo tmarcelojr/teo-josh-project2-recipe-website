@@ -30,8 +30,10 @@ server.use((req, res, next) => {
 		res.locals.userId = req.session.userId
 		res.locals.loggedIn = req.session.loggedIn
 		res.locals.recipe = req.session.recipe
+		res.locals.dialogMessage = req.session.dialogMessage
 	}
 	else {
+		res.locals.dialogMessage = undefined
 		res.locals.loggedIn = false
 		res.locals.username = false
 		res.locals.userId = undefined

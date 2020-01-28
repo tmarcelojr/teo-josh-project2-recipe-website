@@ -1,10 +1,35 @@
 <%- include('../partials/header.ejs') %>
 
 	<h1>Recipe edit page</h1>
+	<div>
+		<p>
+			Name: <%= recipe.name %>
+		</p>
+		<p>
+			IMAGE GOES HERE
+		</p>
+		<P>
+			By: <%= recipe.creator.name %>
+			Posted: <%= recipe.dateCreated %>
+		</P>
+		<p>
+			Category: <%= recipe.category %>
+		</p>
+		<p>
+			Ingredients: <%= recipe.ingredients %>
+		</p>
+		<p>
+			Instructions: <%= recipe.instructions %>
+		</p>
+		<p>
+			COMMENTS WILL SHOW HERE
+		</p>
+		<p>
+			ADD COMMENT WILL SHOW HERE
+		</p>
+	</div>
 
-	testing edit
-
-	<%= recipe %>
 
 
 <%- include('../partials/footer.ejs') %>
+

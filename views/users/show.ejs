@@ -3,8 +3,14 @@
 	<h1>This is our user profile page</h1>
 
 	<p>Content here</p>
-	<% console.log('This is our user', user);%>
-	<div>
+
+	<% if (username !== false) { -%>
+	<a href="/users/<%= user._id %>/edit">EDIT Profile</a>
+	<form method="POST" action="/users/<%= user._id %>?_method=delete">
+   	<button class="btn btn-lg btn-info">Delete <%= user.username %></button>
+   </form>
+   <% } else { %>
+   		<div>
 		<p>
 			Username: <%= user.username %>
 		</p>
@@ -21,11 +27,6 @@
 			Email: <%= user.email %>
 		</p>	
 	</div>
-	<% if (username !== false) { -%>
-	<a href="/users/<%= user._id %>/edit">EDIT Profile</a>
-	<form method="POST" action="/users/<%= user._id %>?_method=delete">
-   	<button class="btn btn-lg btn-info">Delete <%= user.username %></button>
-   </form>
    <% } %>
 
 <%- include('../partials/footer.ejs') %>

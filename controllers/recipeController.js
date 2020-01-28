@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Recipe = require('../models/recipe')
+const User = require('../models/user')
 const isLoggedIn = require('../lib/isLoggedIn')
 const loadRecipe = require('../lib/loadRecipe')
 
@@ -20,6 +21,34 @@ router.get('/', async (req, res, next) => {
 	}
 })
 
+// New recipe page (added before show page to avoid cast error)
+// Passed in middleware isLoggedIn
+router.get('/new', isLoggedIn, async (req, res, next) => {
+	try {
+		res.render('recipes/new.ejs')
+	} catch(err) {
+		next(err)
+	}
+})
+
+// Create recipe
+router.post('/', async (req, res, next) => {
+	try {
+		const createdRecipe = await Recipe.create({
+			name: req.body.name,
+			category: req.body.category,
+			ingredients: req.body.ingredients,
+			instuctions: req.body.instructions,
+			imageUrl: req.body.imageUrl,
+			creator: req.session.userId,
+			dateCreated: Date.now()
+		})
+		res.redirect('/recipes')
+	} catch(err) {
+		next(err)
+	}
+})
+
 // Show page
 router.get('/:id', async (req, res, next) => {
 	try {
@@ -34,12 +63,7 @@ router.get('/:id', async (req, res, next) => {
 	}
 })
 
-router.use(isLoggedIn)
-
-
-// New recipe page
-
-// router.use(loadRecipe)
+// 
 
 // Edit recipe page
 router.get('/:id/edit', loadRecipe, async (req, res, next) => {
