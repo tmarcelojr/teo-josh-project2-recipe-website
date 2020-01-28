@@ -1,7 +1,7 @@
 <!-- TODO Josh 1/25/20, 10:07 PM :Update to include ability to change password -->
 <%- include('../partials/header.ejs') %>	
 
-	<form method="POST" action="/users/show?_method=PUT">
+	<form method="POST" action="/users/<%= user._id%>?_method=PUT">
 
 	  <div class="form-group">
 	    <label for="firstName">First Name:</label>

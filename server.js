@@ -33,7 +33,7 @@ server.use((req, res, next) => {
 	}
 	else {
 		res.locals.loggedIn = false
-		res.locals.username = false
+		res.locals.username = ""
 		res.locals.userId = undefined
 		res.locals.recipe= undefined
 	}

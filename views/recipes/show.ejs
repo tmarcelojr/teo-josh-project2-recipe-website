@@ -21,10 +21,12 @@
 	  <form method="POST" action="/comments/<%= recipe._id %>">
 	  	<!-- TODO Josh 1/27/20, 9:05 PM :if loggedin default user name to logged in user -->
 	    <fieldset>
-	      <input type="text" name="name" placeholder="your name" />
+			<label for="name">Name:</label>
+	      	<input type="text" name="name" placeholder=<%= username %>>
 	    </fieldset>
 	    <fieldset>
-	      <textarea name="commentText" placeholder="Whatcha think?"></textarea>    
+			<label for="commentText">Comment:</label>
+	      	<textarea name="commentText" placeholder="enter comment here"></textarea>    
 	    </fieldset>
 	    <button>Add Comment</button>
 	  </form>

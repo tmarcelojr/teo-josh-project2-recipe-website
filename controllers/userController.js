@@ -84,7 +84,7 @@ router.put('/:id', async (req, res, next) => {
     const updatedUser = await User.findOneAndUpdate(req.session.userId, req.body, { new: true })
     console.log('This is our body', req.body);
     console.log('This is our first name', req.body.firstName);
-    res.redirect('/users/show')    
+    res.redirect('/users/' + req.session.userId)    
     req.session.dialogMessage = undefined
   } catch(err) {
     next(err)

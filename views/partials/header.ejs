@@ -14,7 +14,7 @@
 			<a href="/recipes">Recipes</a>
 		</nav>
 		<nav>
-			<% if (username !== false) { -%>
+			<% if (loggedIn) { -%>
 		      	You are logged in as <%= username %>  |      
 					<a href="/users/:d">Profile</a> |
 		      	<a href="/auth/logout">Log out</a>

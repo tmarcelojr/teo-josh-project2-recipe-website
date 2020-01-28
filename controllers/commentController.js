@@ -7,8 +7,7 @@ const Comment = require('../models/comment.js')
 router.post('/:recipeId', async (req, res, next) => {
   try {
     const foundRecipe = await Recipe.findById(req.params.recipeId)
-    console.log("this is the req.params.recipeid", req.params.recipeId)
-    console.log("this is the foundRecipe id", foundRecipe._id)
+
     const createdComment = await Comment.create({
       text: req.body.commentText,
       name: req.body.name
