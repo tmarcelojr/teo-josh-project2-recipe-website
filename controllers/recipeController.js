@@ -78,11 +78,21 @@ router.get('/:id/edit', loadRecipe, async (req, res, next) => {
 })
 
 // Update recipe
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', loadRecipe, async (req, res, next) => {
 	try {
 		const updatedRecipe = await Recipe
 		.findByIdAndUpdate(req.params.id, req.body, { new: true })
 		console.log('update recipe');
+		res.redirect('/recipes')
+	} catch(err) {
+		next(err)
+	}
+})
+
+// Delete recipe
+router.delete('/:id', loadRecipe, async (req, res, next) => {
+	try {
+		const deletedRecipe = await Recipe.findByIdAndRemove(req.params.id)
 		res.redirect('/recipes')
 	} catch(err) {
 		next(err)

@@ -3,9 +3,9 @@
 * Show - renders but not styled
 		- Done. need to add button logic
 * Delete - haven't started
-* Edit - haven't started
-* Update - haven't started
-* New - haven't started
+* Edit - renders but not styled
+* Update - renders but not styled
+* New - renders but not styled
 
 
 # Comments
