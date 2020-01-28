@@ -67,12 +67,23 @@ router.get('/:id', async (req, res, next) => {
 
 // Edit recipe page
 router.get('/:id/edit', loadRecipe, async (req, res, next) => {
-	console.log('we are in edit controller');
 	try {
 		res.render('recipes/edit.ejs', {
 			recipe: res.locals.recipe,
 			dialogMessage: req.session.dialogMessage
 		})
+	} catch(err) {
+		next(err)
+	}
+})
+
+// Update recipe
+router.put('/:id', async (req, res, next) => {
+	try {
+		const updatedRecipe = await Recipe
+		.findByIdAndUpdate(req.params.id, req.body, { new: true })
+		console.log('update recipe');
+		res.redirect('/recipes')
 	} catch(err) {
 		next(err)
 	}
