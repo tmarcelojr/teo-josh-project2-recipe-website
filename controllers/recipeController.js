@@ -25,6 +25,7 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
 	try {
 		const target = req.body.text
+		const dialogMessage = "Here are your search results for " + target
 		const foundRecipes = await Recipe.find().or([
 		{
 			"name": { $regex: target, $options: "i" }
@@ -43,7 +44,10 @@ router.post('/', async (req, res, next) => {
 		}
 		])
 		console.log('this is all recipes with ingredient', foundRecipes);
-		res.send(req.body.text)
+		res.render('recipes/index.ejs', {
+			recipe: foundRecipes,
+			dialogMessage: dialogMessage
+		})
 	} catch(err) {
 		next(err)
 	}
