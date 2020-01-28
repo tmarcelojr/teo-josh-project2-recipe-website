@@ -21,11 +21,16 @@
 
 	  <h4>Discuss</h4>
 	  <form method="POST" action="/comments/<%= recipe._id %>">
-	  	<!-- TODO Josh 1/27/20, 9:05 PM :if loggedin default user name to logged in user -->
-	    <fieldset>
-			<label for="name">Name:</label>
-	      	<input type="text" name="name" placeholder=<%= username %>>
-	    </fieldset>
+	  	<label for="rating">Rate this recipe:</label>
+
+		<select name="rating" id="rating">
+		    <option value="0">0</option>
+		    <option value="1">1</option>
+		    <option value="2">2</option>
+		    <option value="3">3</option>
+		    <option value="4">4</option>
+		    <option value="5">5</option>
+		</select>
 	    <fieldset>
 			<label for="commentText">Comment:</label>
 	      	<textarea name="commentText" placeholder="enter comment here"></textarea>    
@@ -38,13 +43,19 @@
 	      <li>
 	        <p>
 	          <small>
-	            <%= recipe.comments[i].name %> 
+	            <%= recipe.comments[i].author.username %> 
 	            @ 
 	            <%= recipe.comments[i].date.toLocaleString() %> 
+	            Rating: <%=recipe.comments[i].rating%>
 	          </small>
 	          <br>
 	          <%= recipe.comments[i].text %>        
 	        </p>
+			<% if (loggedIn && recipe.comments[i].author.id === userId) { -%>
+	          <form method="POST" action="/comments/<%= recipe.id %>/<%= recipe.comments[i].id %>?_method=DELETE">
+	            <button>Delete</button>
+	          </form>
+	        <% } -%>
 	      </li>
 	    <% } -%>
 	  </ul>

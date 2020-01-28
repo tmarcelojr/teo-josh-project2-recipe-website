@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema
-
 const commentSchema = new mongoose.Schema ({
 	text: String,
 	rating: Number,
 	imageUrl: String,
-	name: String,
+	author: { 
+		type: mongoose.Schema.Types.ObjectId, 
+		ref: 'User' } ,
 	date: {
 	    type: Date,
 	    default: Date.now

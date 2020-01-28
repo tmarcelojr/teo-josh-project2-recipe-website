@@ -52,7 +52,7 @@ router.post('/', async (req, res, next) => {
 // Show page
 router.get('/:id', async (req, res, next) => {
 	try {
-		const foundRecipe = await Recipe.findById(req.params.id).populate('comments')
+		const foundRecipe = await Recipe.findById(req.params.id).populate('comments.author')
 
 		res.render('recipes/show.ejs', {
 			dialogMessage: req.session.dialogMessage,

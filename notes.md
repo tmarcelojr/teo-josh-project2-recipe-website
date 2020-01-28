@@ -44,3 +44,48 @@
 # Other
 * need to add authorization per function
 
+"carrots"
+
+const target = input
+
+let query = `{ ingredients: { $regex: /${target}/ } }`
+
+"{ ingredients: { $regex: /" + "/ } }`"/ } }`
+
+
+{ ingredients: { $regex: /?/ } } +
+{ instructions: { $regex: /?/ } }
+
+let query = {
+	ingredient: { $regex: /${target}/ },
+	instructions: { $regex: /${target}/ }
+}
+
+
+find(query)
+
+if from recipe link
+	set query object to null
+	find()
+else we must be from search
+	build query object
+	let query = {
+		ingredient: req.body.search,
+		instructions: reg.body.search,
+	}	
+	find(query)
+end if
+
+
+search button /?origin=search
+
+
+if req.query.origin == search
+
+
+
+
+
+
+
+

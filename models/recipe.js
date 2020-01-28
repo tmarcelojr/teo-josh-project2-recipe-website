@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const commentSchema = require('./comment')
+const Comment = require('./comment')
 
 const recipeSchema = new mongoose.Schema({
 	name: String,
@@ -9,10 +9,7 @@ const recipeSchema = new mongoose.Schema({
 	instructions: String,
 	imageUrl: String,
 	creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' } ,
-	comments: [{
-    	type: mongoose.Schema.Types.ObjectId,
-    	ref: 'Comment'
-  	}],
+	comments: [Comment.schema],
 	dateCreated: Date
 })
 
