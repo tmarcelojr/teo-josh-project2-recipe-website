@@ -39,6 +39,12 @@ server.use((req, res, next) => {
 		res.locals.userId = undefined
 		res.locals.recipe= undefined
 	}
+	if(req.session.homePage) {
+		res.locals.homePage = true
+	}
+	else {
+		res.locals.homePage = false
+	}
 	next()
 })
 
@@ -64,9 +70,10 @@ server.get('/seed', (req, res) => {
 })
 
 server.get('/', (req, res) => {
-
+	const homePage = true
 	res.render('index.ejs',{
-		dialogMessage: ''
+		dialogMessage: '',
+		homePage: homePage
 	})
 })
 

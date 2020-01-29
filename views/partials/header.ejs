@@ -12,8 +12,17 @@
 		<nav>
 			<a href="/">Home</a> |
 			<a href="/recipes">Recipes</a>
-			<% if (username !== false) { -%>
+			<% if (loggedIn !== false) { -%>
 				<a href="/recipes/new">| Add a Recipe</a>
+			<% } %>
+		</nav>
+		<nav>
+			<%console.log('this is our req.session.homePage', homePage);%>
+			<% if (!homePage) { %>
+				<form method="POST" action="/recipes">
+				<input type="text" name="text" placeholder="Search for recipes">
+				<button>Search</button>
+				</form>
 			<% } %>
 		</nav>
 		<nav>
