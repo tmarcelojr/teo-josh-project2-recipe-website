@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
 })
 
 // Recipe search bar
-router.post('/', async (req, res, next) => {
+router.post('/search', async (req, res, next) => {
 	try {
 		const target = req.body.text
 		const dialogMessage = "Here are your search results for " + target
@@ -116,7 +116,7 @@ router.put('/:id', loadRecipe, async (req, res, next) => {
 	try {
 		const updatedRecipe = await Recipe
 		.findByIdAndUpdate(req.params.id, req.body, { new: true })
-		res.redirect('/recipes')
+		res.redirect(`/recipes/${req.params.id}`)
 	} catch(err) {
 		next(err)
 	}

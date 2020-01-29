@@ -33,31 +33,37 @@
 
 	<!-- Delete modal -->
 	<div id="delete-modal" class="modal fade" role="dialog">
-		<div class="modal-sm">
+		<div class="modal-dialog">
 			<!-- Delete modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="text" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Delete Options</h4>
+					<button type="text" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
 					<form method="POST" action="/users/<%= user._id %>?_method=delete">
 						<p>
-							We're sad to see you go. Please choose what to remove:
+							<strong>We're sad to see you go!</strong>
 						</p>
-						<div>
-							<label for="deleteRecipes">Recipes: </label>
-							<input id="deleteRecipes" type="checkbox" name="deleteRecipes">
+						<div id="delete-options">
+							<p>Choose options to delete:</p>
+							<div>
+								<label for="deleteRecipes">Recipes: </label>
+								<input id="deleteRecipes" type="checkbox" name="deleteRecipes">
+							</div>
+							<div>
+								<label for="deleteComments">Comments: </label>
+								<input id="deleteComments" type="checkbox" name="deleteComments">
+							</div>				
 						</div>
-						<div>
-							<label for="deleteComments">Comments: </label>
-							<input id="deleteComments" type="checkbox" name="deleteComments">
-						</div>
-						<div>
-							<label for="deleteProfile">Profile: </label>
+						<div id="delete-account">
+							<label for="deleteProfile">Delete Account: </label>
 							<input id="deleteProfile" type="checkbox" name="deleteProfile">
+							<p><small><i>(Deleting account will delete all of your recipes and comments.)</i></small></p>
 						</div>
-						<button>Delete</button>
+						<div id="delete-footer">
+							<button id="user-delete" class="btn btn-danger">Delete</button>
+						</div>
 					</form>
 				</div>
 			</div>

@@ -46,6 +46,10 @@ a:link, a:visited, a:hover, a:active { color: #262626 }
   width: 300px;
 }
 
+.card {
+  cursor: pointer;
+  text-align: left;
+}
 .recipe-image, .card-img-top {
   height: 250px;
   object-fit: cover;
@@ -166,3 +170,22 @@ label.star:before {
   overflow: scroll;
 }
 
+#delete-options {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+
+#delete-footer {
+  text-align: center;
+}
+
+#user-delete {
+  width: 120px;
+}
+
+#delete-account {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
