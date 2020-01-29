@@ -86,7 +86,6 @@ router.post('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
 	try {
 		const foundRecipe = await Recipe.findById(req.params.id).populate('comments.author')
-
 		res.render('recipes/show.ejs', {
 			dialogMessage: req.session.dialogMessage,
 			recipe: foundRecipe,

@@ -45,10 +45,11 @@
 
 	  <ul style="margin-top: 20px">
 	    <% for (let i = 0; i < recipe.comments.length; i++) { -%>
+	    <% recipe.comments.reverse() %>
 	      <li>
 	        <p>
 	          <small>
-	            <%= recipe.comments[i].author.username %> 
+	            <a href="/users/<%= recipe.creator._id %>"><%= recipe.comments[i].author.username %> </a>
 	            @ 
 	            <%= recipe.comments[i].date.toLocaleString() %> 
 	            Rating: <%=recipe.comments[i].rating%>
