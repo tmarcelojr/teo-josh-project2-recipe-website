@@ -11,7 +11,6 @@ header {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 10px;
   border-bottom: 1px solid black;
   margin: 20px;
   align-items: center;
@@ -29,13 +28,9 @@ nav:last-child {
   margin-top: -10px;
 }
 
-.glyphicon-search {
-  padding: 2px;
-  margin-left: 2px;
-}
-
 #nav-search-bar {
   width: 250px;
+  height: 25px;
 }
 
 #nav-user {
@@ -47,22 +42,17 @@ a:link, a:visited, a:hover, a:active { color: #262626 }
 
 /*===== MODAL =====*/
 
-.modal-sm {
-  width: 350px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  overflow: hidden;
+.modal-dialog {
+  width: 300px;
 }
 
 .modal-button {
   margin-top: 10px;
-  background-color: rgb(106 134 167);
+  background-color: rgb(106, 134, 167);
 }
 
 .modal-header {
-  background-color: rgb(106 134 167);
+  background-color: rgb(106, 134, 167);
 }
 
 #login-modal, #register-modal {
@@ -73,7 +63,7 @@ a:link, a:visited, a:hover, a:active { color: #262626 }
 
 #home-page-searchbar {
   width: 60%;
-  height: 34px;
+  height: 40px;
   border-radius: 3px;
   margin-right: 10px;
 }
@@ -87,19 +77,21 @@ a:link, a:visited, a:hover, a:active { color: #262626 }
 #edit-container {
   text-align: left;
   padding: 20px;
+  height: 740px;
 }
 
 /*===== USER PROFILE PAGE =====*/
 
 #user-profile {
-  display: inline-block;
+  margin-bottom: 20px;
 }
 
-#profile-card {
+.profile-card {
   float: right;
   padding: 20px;
-  width: 300px;
-  height: 620px;
+  margin-left: 15px;
+  width: 280px;
+  height: 580px;
   background-color: #EFEDFF;;
   border-radius: 10px;
   box-shadow: 10px 10px 8px #888888;
@@ -109,14 +101,14 @@ a:link, a:visited, a:hover, a:active { color: #262626 }
   margin: auto;
 }
 
-#user-info {
+#user-info, #edit-card {
   margin-top: 20px;
   text-align: left;
 }
 
 #profile-recipe {
-  height: 700px;
-  border: 1px solid black;
+  height: 620px;
+  margin-left: 35px;
 }
 
 #delete-modal {
@@ -130,31 +122,8 @@ a:link, a:visited, a:hover, a:active { color: #262626 }
 #about-me {
   width: 100%;
   max-width: 100%;
-  height: 200px;
+  height: 100px;
   overflow: scroll;
 }
 
 
-
-
-
-
-
-
-#recipe-box-container {
-  display: inline-block;
-}
-
-.recipe-box {
-  display: inline-block;
-  border: 1px solid black;
-  padding: 10px;
-  height: 300px;
-  width: 200px;
-  margin: 20px;
-  cursor: pointer;
-}
-
-#recipe-container {
-  width: 300px;
-}

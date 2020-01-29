@@ -41,14 +41,13 @@ router.post('/register', async (req, res, next) => {
 	      password: requestedPassword
 	    })
 
-	    console.log("createdUser is ", createdUser)
+	    // console.log("createdUser is ", createdUser)
 	    // Update session
 	    req.session.loggedIn = true
 	    req.session.userId = createdUser._id
 	    req.session.username = createdUser.username
 	    req.session.dialogMessage = "Thanks for signing up, " + createdUser.username + ". " +
 	    							"Please complete your profile."
-
 	    res.redirect(`/users/${createdUser._id}/edit`)
 	  }
 })

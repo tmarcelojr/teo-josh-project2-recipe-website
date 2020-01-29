@@ -2,9 +2,9 @@
 <html>
 <head>
 	<title>Recipe Page</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
@@ -24,7 +24,7 @@
 			<% if (!homePage) { %>
 				<form class="form-inline" method="POST" action="/recipes">
 				  <i class="fas fa-search" aria-hidden="true"></i>
-				  <input id="nav-search-bar" class="form-control form-control-sm ml-3 w-75" type="text" name="text" placeholder="Search Recipes"
+				  <input id="nav-search-bar" class="form-control" type="text" name="text" placeholder="Search Recipes"
 				    aria-label="Search">
 				  <span class="glyphicon glyphicon-search"></span>
 				</form>
@@ -45,12 +45,12 @@
 
 		<!-- Login modal -->
 		<div id="login-modal" class="modal fade" role="dialog">
-			<div class="modal-sm">
+			<div class="modal-dialog" role="document">
 				<!-- Login modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Login</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
 						<form method="POST" action="/auth/login">
@@ -71,13 +71,13 @@
 
 		<!-- Register modal -->
 		<div id="register-modal" class="modal fade" role="dialog">
-			<div class="modal-sm">
+			<div class="modal-dialog">
 
 				<!-- Register modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Become a foody!</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
 						<form method="POST" action="/auth/register">
@@ -96,6 +96,6 @@
 			</div>
 		</div>
 
+		<p id="dialogMessage"><%= dialogMessage %></p>
 
-	<p id="dialogMessage"><%= dialogMessage %></p>
 	
