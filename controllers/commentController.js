@@ -32,6 +32,7 @@ router.post('/:recipeId', isLoggedIn, async (req, res, next) => {
 // Destroy
 router.delete("/:recipeId/:commentId", isLoggedIn, async (req, res, next) => {
 	try {
+
 		const recipe = await Recipe.findById(req.params.recipeId)
 		recipe.comments.id(req.params.commentId).remove()
 		await recipe.save()

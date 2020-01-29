@@ -74,12 +74,40 @@ router.put('/:id', isLoggedIn, async (req, res, next) => {
 // Delete user
 router.delete('/:id', isLoggedIn, async (req, res, next) => {
   try {
-    // const deleteRecipes =
-    // if( deleteRecipes ==  "on" ){
-    //   console.log('delete recipes by this user');
-    // }
-    await User.findByIdAndRemove(req.params.id)
-    await req.session.destroy()
+    const foundRecipes = await Recipe.find().populate('comments.author')
+
+  //   // delete recipes
+    if(req.body.deleteRecipes){
+      await Recipe.deleteMany({ creator : req.params.id})
+    } 
+
+
+  // delete comments. Brute forcing through all recipes until we figure out how query can be refined.
+    if(req.body.deleteComments){
+      for (let i = 0; i < 5; i++) {
+
+        for (let c = 0; c < foundRecipes[i].comments.length; c++) {
+
+          if(foundRecipes[i].comments[c].author.id == req.params.id){
+            foundRecipes[i].comments[c].remove()
+            await foundRecipes[i].save()
+          }
+        }
+      }      
+    }
+
+     // delete profile. User can only delete profile is comments also deleted.
+    if(req.body.deleteProfile){
+      if(req.body.deleteComments){
+        const deletedUser = await User.findByIdAndRemove(req.params.id)
+        req.session.loggedIn = false
+        req.session.userId = undefined
+        req.session.username = undefined
+      } else {
+        req.session.dialogMessage = "You must delete comments if you want to delete Profile."
+      }
+    }  
+
     res.redirect('/')
     console.log('Successfuly deleted user.');
   } catch(err) {

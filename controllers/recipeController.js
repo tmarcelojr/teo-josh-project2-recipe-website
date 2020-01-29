@@ -11,7 +11,6 @@ const loadRecipe = require('../lib/loadRecipe')
 router.get('/', async (req, res, next) => {
 	try {
 			const foundRecipes = await Recipe.find().populate('creator')
-			// console.log('Found recipes', foundRecipes);
 			res.render('recipes/index.ejs', {
 				dialogMessage: req.session.dialogMessage,
 				recipe: foundRecipes
@@ -43,7 +42,7 @@ router.post('/', async (req, res, next) => {
 			"description": { $regex: target, $options: "i" }
 		}
 		])
-		console.log('this is all recipes with ingredient', foundRecipes);
+
 		res.render('recipes/index.ejs', {
 			recipe: foundRecipes,
 			dialogMessage: dialogMessage
@@ -116,7 +115,6 @@ router.put('/:id', loadRecipe, async (req, res, next) => {
 	try {
 		const updatedRecipe = await Recipe
 		.findByIdAndUpdate(req.params.id, req.body, { new: true })
-		console.log('update recipe');
 		res.redirect('/recipes')
 	} catch(err) {
 		next(err)
