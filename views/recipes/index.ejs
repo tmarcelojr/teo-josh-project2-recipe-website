@@ -7,7 +7,7 @@
 			<% recipe.forEach((recipe)=> { %>
 				<div class="col mb-3 d-flex align-items-stretch">
 					<div class="card" style="width: 25rem;" onclick="window.location.href='/recipes/<%= recipe._id %>';">
-						<img src="<%= recipe.imageUrl %>" class="card-img-top">
+						<img src="<%= recipe.imageUrl %>" class="card-img-top recipe-image">
 						<div class="card-body">
 							<div class="stars">
 								<form action="">
