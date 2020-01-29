@@ -84,7 +84,7 @@ router.delete('/:id', isLoggedIn, async (req, res, next) => {
 
   // delete comments. Brute forcing through all recipes until we figure out how query can be refined.
     if(req.body.deleteComments){
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < foundRecipes.length; i++) {
 
         for (let c = 0; c < foundRecipes[i].comments.length; c++) {
 
