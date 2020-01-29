@@ -37,3 +37,9 @@ nav:last-child {
 #recipe-container {
   width: 300px;
 }
+
+.card-img-top {
+    width: 100%;
+    /*height: 15vw;*/
+    /*object-fit: cover;*/
+}

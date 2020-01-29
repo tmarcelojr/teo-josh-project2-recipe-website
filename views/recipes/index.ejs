@@ -1,22 +1,24 @@
 <%- include('../partials/header.ejs') %>
 
-	<h1>Recipe index page</h1>
+	<h1>Recipe index</h1>
 
-	<div id="recipe-box-container">
-		<% recipe.forEach((recipe)=> { %>
-				<div class="recipe-box" onclick="window.location.href='/recipes/<%= recipe._id %>';">
-					<p>
-						Name: <%= recipe.name %>
-					</p>
-					<p>
-						Category: <%= recipe.category %>
-					</p>
-					<p>
-						Creator: <a href="/users/<%= recipe.creator.id %>"><%= recipe.creator.username %></a>
-					</p>			
-				</div>
-		<% }) %>
-	</div>
+	<div class="container">
+		<div class="row row-cols-3 mb-5">	
+			<% recipe.forEach((recipe)=> { %>
+				<div class="col mb-5">
+					<div class="card" style="width: 30rem;" onclick="window.location.href='/recipes/<%= recipe._id %>';">
+						<img src="<%= recipe.imageUrl %>" class="card-img-top">
+						<div class="card-body">
+							<h5 class="card-title"><%= recipe.name %></h5>
+	    					<p class="card-text"><%= recipe.description %></p>
+	    					<p class="card-text">created by: <%= recipe.creator.username %></p>			
+							<h6 class="card-subtitle mb-2 text-muted">Category: <%= recipe.category %></h6>
+	  					</div>
+	  				</div> <!-- card -->
+  				</div> <!-- col -->
+			<% }) %> <!-- loop -->
+		</div> <!-- row row-cols-3 -->
+	</div> <!-- container -->
 
 
 <%- include('../partials/footer.ejs') %>

@@ -91,6 +91,15 @@ async function seedRecipes(users){
 			console.log("ingredients after ingredient loop", ingredients)
 
 			//loop ingredient Group
+			console.log("recipe is ", recipes[r].name)
+			if(recipes[r].hasOwnProperty('ingredientGroup')){
+				console.log("recipe has ingredientGroup")
+			}
+			if(recipes[r].ingredientGroup.hasOwnProperty('ingredient')){
+				console.log("recipe has ingredient")
+			}
+
+
 			console.log("loop ingredientGroup")
 			if (!Array.isArray(recipes[r].ingredientGroup) || !recipes[r].ingredientGroup.length){
 				if (!Array.isArray(recipes[r].ingredientGroup.ingredient) || !recipes[r].ingredientGroup.ingredient.length) {
