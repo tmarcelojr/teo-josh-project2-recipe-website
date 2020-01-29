@@ -6,30 +6,34 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 	<header>
-		<nav>
+		<nav class="nav-link">
+				<a href="/">
+					<img id="nav-logo" src="https://i.imgur.com/7kZx5q5.png" alt="foody logo" height="60">
+				</a>
 			<a href="/">Home</a> |
 			<a href="/recipes">Recipes</a>
 			<% if (loggedIn !== false) { -%>
 				<a href="/recipes/new">| Add a Recipe</a>
 			<% } %>
 		</nav>
-		<nav>
-			<%console.log('this is our req.session.homePage', homePage);%>
+		<nav class="nav-link">
 			<% if (!homePage) { %>
-				<form method="POST" action="/recipes">
-				<input type="text" name="text" placeholder="Search for recipes">
-				<button>Search</button>
+				<form class="form-inline" method="POST" action="/recipes">
+				  <i class="fas fa-search" aria-hidden="true"></i>
+				  <input id="nav-search-bar" class="form-control" type="text" name="text" placeholder="Search Recipes"
+				    aria-label="Search">
+				  <span class="glyphicon glyphicon-search"></span>
 				</form>
 			<% } %>
 		</nav>
-		<nav>
-			<% if (loggedIn) { -%>
-		      	You are logged in as <%= username %>  |      
-					<a href="/users/<%= userId %>">Profile</a> |
+		<nav class="nav-link">
+			<% if (loggedIn) { -%>     
+					<a id="nav-user" href="/users/<%= userId %>"><%= username %></a> |
 		      	<a href="/auth/logout">Log out</a>
 		      <% } else { -%>
 		         <!-- Trigger login modal-->
@@ -38,31 +42,29 @@
 		        <a href="" data-toggle="modal" data-target="#register-modal">Register</a>
 	      <% } -%>
 		</nav>
+	</header>
 
 		<!-- Login modal -->
 		<div id="login-modal" class="modal fade" role="dialog">
-			<div class="modal-sm">
+			<div class="modal-dialog" role="document">
 				<!-- Login modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Login</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
 						<form method="POST" action="/auth/login">
 							<div>
 								<label for="username">Username</label>
-								<input id="username" type="text" name="username" placeholder="Enter username here...">
+								<input id="username" type="text" name="username" class="form-control form-control-sm ml-3 w-75" placeholder="Enter username here...">
 							</div>
 							<div>
 								<label for="password">Password</label>
-								<input id="password" type="text" name="password" placeholder="Enter password here...">
+								<input id="password" type="text" name="password" class="form-control form-control-sm ml-3 w-75" placeholder="Enter password here...">
 							</div>
-							<button>Log in</button>
+							<button class="btn btn-primary modal-button">Log in</button>
 						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>				
 					</div>
 				</div>
 			</div>
@@ -70,35 +72,31 @@
 
 		<!-- Register modal -->
 		<div id="register-modal" class="modal fade" role="dialog">
-			<div class="modal-sm">
+			<div class="modal-dialog">
 
 				<!-- Register modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
+						<h4 class="modal-title">Become a foody!</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Register</h4>
 					</div>
 					<div class="modal-body">
 						<form method="POST" action="/auth/register">
-							<div>
-								<label for="username">Username</label>
-								<input id="username" type="text" name="username" placeholder="Enter username here...">
+							<div class="">
+								<label for="username">Create Username</label>
+								<input class="form-control form-control-sm ml-3 w-75" id="username" type="text" name="username" placeholder="Enter username here...">
 							</div>
 							<div>
 								<label for="password">Password</label>
-								<input id="password" type="text" name="password" placeholder="Enter password here...">
+								<input class="form-control form-control-sm ml-3 w-75" id="password" type="text" name="password" placeholder="Enter password here...">
 							</div>
-							<button>Register</button>
+							<button class="btn btn-primary modal-button">Register</button>
 						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>				
 					</div>
 				</div>
 			</div>
 		</div>
-	</header>
 
+		<p id="dialogMessage"><%= dialogMessage %></p>
 
-	<p id="dialogMessage"><%= dialogMessage %></p>
 	

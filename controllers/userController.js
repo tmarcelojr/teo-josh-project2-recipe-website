@@ -43,17 +43,21 @@ router.get('/:id', async (req, res, next) => {
 // (Edit) GET Edit form to edit user.
 router.get('/:id/edit', isLoggedIn, async (req, res, next) => {
   try {
+
     const foundUser = await User.findById(req.params.id)
+
+    let msg = req.session.dialogMessage
+    req.session.dialogMessage = undefined
+
     
     res.render("users/edit.ejs", {
       user: foundUser,
       sessionUsername: req.session.username,
       sessionUserId: req.session.userId,
       sessionLoggedIn: req.session.loggedIn,
-      dialogMessage: req.session.dialogMessage
+      dialogMessage: msg
     })  
     // clear the session message
-    req.session.dialogMessage = undefined
     
   } catch(err) {
       next(err)
