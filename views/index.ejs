@@ -1,11 +1,13 @@
 <%- include('./partials/header.ejs') %>
 
-<h1>This is our index page</h1>
-
-<p>Search bar goes here</p>
-<form method="POST" action="/recipes">
-	<input type="text" name="text" placeholder="Search for recipes">
-	<button>Search</button>
-</form>
+	<div>
+		<img src="https://i.imgur.com/7kZx5q5.png" alt="foody logo">
+	</div>
+	<div id="home-search-container">
+		<form method="POST" action="/recipes">
+			<input id="home-page-searchbar" type="text" name="text" placeholder="Search for recipes">
+			<button id="home-search-button" class="btn btn-info">Search</button>
+		</form>	
+	</div>
 
 <%- include('./partials/footer.ejs') %>

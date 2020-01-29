@@ -1,30 +1,35 @@
-<!-- TODO Josh 1/25/20, 10:07 PM :Update to include ability to change password -->
 <%- include('../partials/header.ejs') %>	
+	<div id="edit-container">
+		<form method="POST" action="/users/<%= user._id%>?_method=PUT">
 
-	<form method="POST" action="/users/<%= user._id%>?_method=PUT">
+			<img src="https://i.pravatar.cc/150?u=<%=user._id%>">
+		  	<div class="form-group">
+	    		<label for="imageurl">Profile picture:</label>
+	    		<input type="text" id="imageurl" name="imageurl" value="https://i.pravatar.cc/150?u=<%=user._id%>">
+		  	</div>
 
-	  <div class="form-group">
-	    <label for="firstName">First Name:</label>
-	    <input type="text" id="firstName" name="firstName" value="<%= user.firstName %>">
-	  </div>  
-	  <div class="form-group">
-	    <label for="lastName">Last Name:</label>
-	    <input type="text" id="lastName" name="lastName" value="<%= user.lastName %>">
-	  </div>
-	  <div class="form-group">
-	    <label for="imageurl">Image url:</label>
-	    <input type="text" id="imageurl" name="imageurl" value="https://i.pravatar.cc/150?u=<%=user._id%>">
-	  </div>
-	  <img src="https://i.pravatar.cc/150?u=<%=user._id%>">
-	  <div class="form-group">
-	    <label for="location">Location:</label>
-	    <input type="text" id="location" name="location" value="<%= user.location %>">
-	  </div>
-	  <div class="form-group">
-	    <label for="emailaddress">Email Address:</label>
-	    <input type="email" id="email" name="email" value="<%= user.email %>">
-	  </div>
-	  <button type="submit">Save</button>
-	</form>	
+		  <div class="form-group">
+		    <label for="firstName">First Name:</label>
+		    <input type="text" id="firstName" name="firstName" value="<%= user.firstName %>">
+		    <label for="lastName">Last Name:</label>
+		    <input type="text" id="lastName" name="lastName" value="<%= user.lastName %>">
+		  </div>  
+
+		  <div class="form-group">
+		    <label for="location">Location:</label>
+		    <input type="text" id="location" name="location" value="<%= user.location %>">
+		    <label for="emailaddress">Email Address:</label>
+		    <input type="email" id="email" name="email" value="<%= user.email %>">
+		  </div>
+
+		  <div class="form-group">
+		    <label for="aboutMe">About Me:</label>
+		    <textarea id="aboutMe" name="aboutMe">
+
+		    </textarea>
+		  </div>
+		  <button type="submit">Save</button>
+		</form>	
+	</div>
 
 <%- include('../partials/footer.ejs') %>	

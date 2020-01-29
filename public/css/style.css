@@ -1,6 +1,20 @@
+body {
+  width: 960px;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  font-size: 16px;
+}
+
+/*===== NAVIGATION BAR =====*/
+
 header {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid black;
+  margin: 20px;
+  align-items: center;
 }
 
 nav {
@@ -11,7 +25,30 @@ nav:last-child {
   text-align: right;
 }
 
+#nav-logo {
+  margin-top: -10px;
+}
+
+.glyphicon-search {
+  padding: 2px;
+  margin-left: 2px;
+}
+
+#nav-search-bar {
+  width: 250px;
+}
+
+#nav-user {
+  color: #394689;
+}
+
+/* ===== LINKS ===== */
+a:link, a:visited, a:hover, a:active { color: #262626 }
+
+/*===== MODAL =====*/
+
 .modal-sm {
+  width: 350px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -19,9 +56,93 @@ nav:last-child {
   overflow: hidden;
 }
 
+.modal-button {
+  margin-top: 10px;
+  background-color: rgb(106 134 167);
+}
+
+.modal-header {
+  background-color: rgb(106 134 167);
+}
+
+#login-modal, #register-modal {
+  text-align: left;
+}
+
+/*===== HOME PAGE =====*/
+
+#home-page-searchbar {
+  width: 60%;
+  height: 34px;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+#home-search-button {
+  margin-top: -5px;
+}
+
+/*===== USER EDIT PAGE =====*/
+
+#edit-container {
+  text-align: left;
+  padding: 20px;
+}
+
+/*===== USER PROFILE PAGE =====*/
+
+#user-profile {
+  display: inline-block;
+}
+
+#profile-card {
+  float: right;
+  padding: 20px;
+  width: 300px;
+  height: 620px;
+  background-color: #EFEDFF;;
+  border-radius: 10px;
+  box-shadow: 10px 10px 8px #888888;
+}
+
+#profile-picture {
+  margin: auto;
+}
+
+#user-info {
+  margin-top: 20px;
+  text-align: left;
+}
+
+#profile-recipe {
+  height: 700px;
+  border: 1px solid black;
+}
+
+#delete-modal {
+  text-align: left;
+}
+
+#profile-link {
+  color: #394689;
+}
+
+#about-me {
+  width: 100%;
+  max-width: 100%;
+  height: 200px;
+  overflow: scroll;
+}
+
+
+
+
+
+
+
+
 #recipe-box-container {
   display: inline-block;
-
 }
 
 .recipe-box {
