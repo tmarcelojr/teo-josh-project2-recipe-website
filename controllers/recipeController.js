@@ -10,7 +10,8 @@ const loadRecipe = require('../lib/loadRecipe')
 // Index page
 router.get('/', async (req, res, next) => {
 	try {
-			const foundRecipes = await Recipe.find().populate('creator')
+			const foundRecipes = await Recipe.find().populate('creator').populate('comments')
+			console.log('this is the recipe with comments', foundRecipes)
 			res.render('recipes/index.ejs', {
 				dialogMessage: req.session.dialogMessage,
 				recipe: foundRecipes
