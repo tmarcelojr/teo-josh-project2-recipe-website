@@ -10,11 +10,18 @@ const loadRecipe = require('../lib/loadRecipe')
 // Index page
 router.get('/', async (req, res, next) => {
 	try {
-			const foundRecipes = await Recipe.find().populate('creator')//.populate('comments.rating')
+			const foundRecipes = await Recipe.find().populate('creator').populate('comment.rating')
+
+			// foundRecipes.forEach(recipe => {
+			// 	recipe.rating = 5
+			// 	recipe.save()
+			// 	console.log("recipe with rating", recipe)
+			// })
+
 			// console.log('this is the recipe with comments', foundRecipes)
 			res.render('recipes/index.ejs', {
 				dialogMessage: req.session.dialogMessage,
-				recipe: foundRecipes
+				recipes: foundRecipes
 			})
 	} catch(err) {
 		next(err)
