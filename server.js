@@ -75,7 +75,6 @@ server.get('/seed', (req, res) => {
 server.get('/', async (req, res, next) => {
 	const homePage = true
 	res.render('index.ejs', {
-		dialogMessage: undefined,
 		homePage: homePage
 	})
 })

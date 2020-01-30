@@ -24,7 +24,7 @@
 			<%= recipe.instructions %>
 		</textarea>	
 
-	<% if(loggedIn && userId == recipe.creator) { %>
+	<% if(loggedIn && userId == username) { %>
 		<a href="/recipes/<%= recipe._id %>/edit">Edit recipe</a> |
 		<form method="POST" action="/recipes/<%= recipe._id %>?_method=DELETE">
 			<button>Delete</button>

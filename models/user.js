@@ -9,7 +9,8 @@ const userSchema = new Schema({
 	lastName: String,
 	imageUrl: String,
 	location: String, 
-	email: String
+	email: String,
+	aboutMe: String
 })
 
 // MODEL
