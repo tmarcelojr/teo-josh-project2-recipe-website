@@ -104,16 +104,13 @@ router.delete('/:id', isLoggedIn, async (req, res, next) => {
 
      // delete profile. User can only delete profile is comments also deleted.
     if(req.body.deleteProfile){
-      if(req.body.deleteComments){
         const deletedUser = await User.findByIdAndRemove(req.params.id)
         req.session.loggedIn = false
         req.session.userId = undefined
         req.session.username = undefined
+        await req.session.destroy()
       } else {
-        req.session.dialogMessage = "You must delete comments if you want to delete Profile."
       }
-    }  
-
     res.redirect('/')
     console.log('Successfuly deleted user.');
   } catch(err) {

@@ -49,7 +49,7 @@ module.exports = [
   imageUrl: "http://dummyimage.com/201x195.bmp/cc0000/ffffff"
 }, {
   username: "hattenburrow6",
-  password: "ZDn0oAntJW",
+  password: "hatten",
   firstName: "Hilliard",
   lastName: "Attenburrow",
   email: "hattenburrow6@friendfeed.com",
