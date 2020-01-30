@@ -2,6 +2,21 @@
 
 	<h1>Recipe show page</h1>
 	<div id="recipe-container">
+	<!-- rating -->
+		<div class="stars">
+			<form action="">
+				<% for (let i = 5; i > 0; i--) { -%>
+					<% if (rating === i) { -%>
+						<input class="star star-<% i %>" id="star-<% i %>" type="radio" disabled='disabled'name="star" checked/>
+					<% } else { -%>
+						<input class="star star-<% i %>" id="star-<% i %>" type="radio" disabled='disabled'name="star"/>	
+					<% } -%>
+					<label class="star star-<% i %>" for="star-<% i %>"></label>
+				<% } -%>
+			</form>
+		</div>
+
+	<!-- end rating -->
 		<textarea disabled>
 			<%= recipe.ingredients %>
 		</textarea>

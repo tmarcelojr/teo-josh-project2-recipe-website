@@ -10,8 +10,8 @@ const loadRecipe = require('../lib/loadRecipe')
 // Index page
 router.get('/', async (req, res, next) => {
 	try {
-			const foundRecipes = await Recipe.find().populate('creator').populate('comments')
-			console.log('this is the recipe with comments', foundRecipes)
+			const foundRecipes = await Recipe.find().populate('creator')//.populate('comments.rating')
+			// console.log('this is the recipe with comments', foundRecipes)
 			res.render('recipes/index.ejs', {
 				dialogMessage: req.session.dialogMessage,
 				recipe: foundRecipes
@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
 })
 
 // Recipe search bar
-router.post('/search', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
 	try {
 		const target = req.body.text
 		const dialogMessage = "Here are your search results for " + target
@@ -86,10 +86,21 @@ router.post('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
 	try {
 		const foundRecipe = await Recipe.findById(req.params.id).populate('comments.author')
+
+		let sumRating = 0
+		let averageRating = 0
+
+		for (let i = 0; i < foundRecipe.comments.length; i++) {
+			sumRating += foundRecipe.comments[i].rating
+		}
+		averageRating = Math.round(sumRating / foundRecipe.comments.length)
+
 		res.render('recipes/show.ejs', {
 			dialogMessage: req.session.dialogMessage,
 			recipe: foundRecipe,
+			rating: averageRating,
 			loggedInUser: req.session.userId
+
 		})
 	} catch(err) {
 		next(err)
@@ -115,7 +126,7 @@ router.put('/:id', loadRecipe, async (req, res, next) => {
 	try {
 		const updatedRecipe = await Recipe
 		.findByIdAndUpdate(req.params.id, req.body, { new: true })
-		res.redirect(`/recipes/${req.params.id}`)
+		res.redirect('/recipes')
 	} catch(err) {
 		next(err)
 	}

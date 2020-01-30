@@ -1,39 +1,39 @@
 module.exports = [
   {
-  username: "pn",
-  password: "pn",
+  username: "petn",
+  password: "petn",
   firstName: "Pet",
   lastName: "Normanville",
   email: "pnormanville8@arstechnica.com",
   location: "Paranavaí",
   imageUrl: "http://dummyimage.com/235x245.jpg/5fa2dd/ffffff"
 }, {
-  username: "bb",
-  password: "bb",
+  username: "virgilK",
+  password: "virgilK",
   firstName: "Virgil",
   lastName: "Kiehne",
   email: "vkiehne1@icio.us",
   location: "Gebang",
   imageUrl: "http://dummyimage.com/180x211.bmp/ff4444/ffffff"
 }, {
-  username: "cc",
-  password: "cc",
+  username: "Chrysa",
+  password: "Chrysa",
   firstName: "Chrysa",
   lastName: "Mashro",
   email: "cmashro2@soundcloud.com",
   location: "Sanli",
   imageUrl: "http://dummyimage.com/199x225.bmp/cc0000/ffffff"
 }, {
-  username: "dd",
-  password: "dd",
+  username: "Nancee",
+  password: "Nancee",
   firstName: "Nancee",
   lastName: "Ruppele",
   email: "nruppele3@rediff.com",
   location: "Gatak",
   imageUrl: "http://dummyimage.com/241x112.bmp/5fa2dd/ffffff"
 }, {
-  username: "aa",
-  password: "aa",
+  username: "IsaA",
+  password: "IsaA",
   firstName: "Isa",
   lastName: "Allaway",
   email: "iallaway4@disqus.com",

@@ -66,7 +66,8 @@ server.use('/comments', commentController)
 // Creating user data 
 server.get('/seed', (req, res) => {
 	const data = require('./createData.js')
-	// / loop over array 
+	// data.seedData()
+	
 })
 
 server.get('/', (req, res) => {
