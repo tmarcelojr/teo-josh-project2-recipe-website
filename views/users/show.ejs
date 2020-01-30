@@ -1,6 +1,8 @@
 <%- include('../partials/header.ejs') %>
 	<div class="user-profile row">
-	  	<div id="profile-recipe" class="col-md-8">1 of 2</div>
+	  	<div id="profile-recipe" class="col-md-8">
+	  		<h2><i><strong>Foody Recipes</strong></i></h2>
+	  	</div>
 	  	<div class="profile-card">
 	  		<div id="profile-picture">
 	  			<img src="https://i.pravatar.cc/150?u=">
@@ -19,9 +21,7 @@
 					<strong>Email</strong>: <i><%= user.email %></i>
 				</p>
 				<p>
-					<strong>About Me</strong>:
-					<div id="about-me">
-					</div>
+					<strong>About Me</strong>: <%= user.location %><%= user.aboutMe %>
 				</p>
 				<% if (username) { -%>
 					<a id="profile-link"href="/users/<%= user._id %>/edit">Edit </a>

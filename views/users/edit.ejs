@@ -3,7 +3,7 @@
 		<div id="profile-recipe" class="col-md-8">1 of 2</div>
 	  	<div class="profile-card" id="edit-container">
 			<img src="https://i.pravatar.cc/150?u=<%=user._id%>">
-			<form id="edit-card" method="POST" action="/users/<%= user._id%>?_method=PUT">
+			<form id="edit-card" method="POST" action="/users/<%= user._id %>?_method=PUT">
 			  	<div class="form-group">
 		    		<label for="imageurl">Profile picture:</label>
 		    		<input type="text" id="imageurl" name="imageurl" value="https://i.pravatar.cc/150?u=<%=user._id%>">
@@ -28,11 +28,11 @@
 			  </div>
 
 			  <div class="form-group">
-			    <label for="about-me">About Me:</label>
-			    <textarea id="about-me" name="aboutMe"></textarea>
+			    <label for="aboutMe">About Me:</label>
+			    <input type="text" id="aboutMe" name="aboutMe" value="<%= user.aboutMe %>">
 			  </div>
 
-			  <button class="btn btn-primary modal-button type="submit">Save</button>
+			  <button class="btn btn-primary modal-button" type="submit">Save</button>
 
 			</form>	
 		</div>

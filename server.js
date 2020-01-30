@@ -5,6 +5,7 @@ const PORT = process.env.PORT
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const methodOverride = require('method-override')
+const Recipe = require('./models/recipe')
 
 // ------ DATABASE ------
 
@@ -70,10 +71,11 @@ server.get('/seed', (req, res) => {
 	
 })
 
-server.get('/', (req, res) => {
+// Recipe home page
+server.get('/', async (req, res, next) => {
 	const homePage = true
-	res.render('index.ejs',{
-		dialogMessage: '',
+	res.render('index.ejs', {
+		dialogMessage: undefined,
 		homePage: homePage
 	})
 })

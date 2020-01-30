@@ -29,9 +29,8 @@ router.post('/register', async (req, res, next) => {
 	  })
 
 	  if(usernameTaken) { 
-	  	console.log("Username is taken");
 	    req.session.dialogMessage = `Username ${requestedUsername} already taken. Please choose a new one.`
-	    res.redirect('/auth/register')
+	    res.redirect('back')
 	  }
 
 	  // username is available
@@ -56,8 +55,8 @@ router.post('/register', async (req, res, next) => {
 router.post('/login', async (req, res, next) => {
   const user = await User.findOne({ username: req.body.username })
   if(!user) {
-    req.session.message = "Invalid username or password."  
-    res.redirect('back')
+    req.session.dialogMessage = "Invalid username or password."  
+    req.session.dialogMessage = undefined 
   }
   else {
     if(user.password == req.body.password) {
@@ -68,8 +67,8 @@ router.post('/login', async (req, res, next) => {
       res.redirect('back')
     }
     else {
-      req.session.message = "Invalid username or password."
-      res.redirect('back')
+      req.session.dialogMessage = "Invalid username or password."
+      req.session.dialogMessage = undefined
     }
   }
 })

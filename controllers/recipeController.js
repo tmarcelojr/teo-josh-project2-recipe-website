@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
 })
 
 // Recipe search bar
-router.post('/', async (req, res, next) => {
+router.post('/search', async (req, res, next) => {
 	try {
 		const target = req.body.text
 		const dialogMessage = "Here are your search results for " + target

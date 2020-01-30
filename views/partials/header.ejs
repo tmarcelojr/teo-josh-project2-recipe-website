@@ -24,9 +24,8 @@
 		<nav class="nav-link">
 			<% if (!homePage) { %>
 				<form class="form-inline" method="POST" action="/recipes/search">
-				  <input id="nav-search-bar" class="form-control" type="text" name="text" placeholder="Search Recipes"
-				    aria-label="Search">
-				  <span class="glyphicon glyphicon-search"></span>
+					<input id="nav-search-bar" class="form-control" type="text" name="text" placeholder="Search Recipes">
+					<i id="search-icon" class="fa fa-search"></i>
 				</form>
 			<% } %>
 		</nav>
@@ -52,6 +51,7 @@
 						<h4 class="modal-title">Login</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
+					<p id="dialogMessage"><%= dialogMessage %></p>
 					<div class="modal-body">
 						<form method="POST" action="/auth/login">
 							<div>
@@ -96,6 +96,5 @@
 			</div>
 		</div>
 
-		<p id="dialogMessage"><%= dialogMessage %></p>
 
-	
+	<p id="dialogMessage"><%= dialogMessage %></p>
