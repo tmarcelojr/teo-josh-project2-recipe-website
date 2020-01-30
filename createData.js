@@ -97,6 +97,12 @@ async function seedRecipes(users){
 	    	// console.log("this is the recipe with comment", createdRecipe )
 			// mongoose.connection.close();
 		}
+
+		// Update recipes that don't have image with placeholder image.
+		const updatedRecipes = await Recipe.updateMany({"imageUrl": {"$exists": false}}, {"$set": {"imageUrl": "http://via.placeholder.com/300/AED6F1/D6EAF8?text=image%20unavailable"}})
+		
+
+
 	} catch(err) {
 		console.log("this is the error", err)
 	}

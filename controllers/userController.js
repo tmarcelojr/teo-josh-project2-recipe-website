@@ -29,9 +29,11 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const foundUser = await User.findById(req.params.id)
+    const foundRecipes = await Recipe.find( { creator: req.params.id}).populate('creator')
     // console.log('this is our user', foundUser);
     res.render('users/show.ejs', {
       user: foundUser,
+      recipes: foundRecipes,
       dialogMessage: req.session.dialogMessage
     })
   } catch(err) {

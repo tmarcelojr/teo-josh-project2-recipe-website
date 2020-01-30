@@ -1,8 +1,46 @@
 <%- include('../partials/header.ejs') %>
 	<div class="user-profile row">
+<<<<<<< HEAD
 	  	<div id="profile-recipe" class="col-md-8">
 	  		<h2><i><strong>Foody Recipes</strong></i></h2>
 	  	</div>
+=======
+	  	<div id="profile-recipe" class="col-md-8">1 of 2</div>
+
+<!-- recipes -->
+<div class="container">
+		<div class="row row-cols-3">	
+			<% recipes.forEach((recipe)=> { %>
+				<div class="col mb-3 d-flex align-items-stretch">
+					<div class="card" style="width: 25rem;" onclick="window.location.href='/recipes/<%= recipe._id %>';">
+						<img src="<%= recipe.imageUrl %>" class="card-img-top recipe-image">
+						<div class="card-body">
+							<div class="stars">
+								<form action="">
+									<input class="star star-5" id="star-5" type="radio" disabled='disabled'name="star" />
+									<label class="star star-5" for="star-5"></label>
+									<input class="star star-4" id="star-4" type="radio" disabled='disabled'name="star" checked/>
+									<label class="star star-4" for="star-4"></label>
+									<input class="star star-3" id="star-3" type="radio" disabled='disabled'name="star"/>
+									<label class="star star-3" for="star-3"></label>
+									<input class="star star-2" id="star-2" type="radio" disabled='disabled'name="star"/>
+									<label class="star star-2" for="star-2"></label>
+									<input class="star star-1" id="star-1" type="radio" disabled='disabled'name="star"/>
+									<label class="star star-1" for="star-1"></label>
+								</form>
+							</div>
+							<h5 class="card-title"><%= recipe.name %></h5>
+	    					<p class="card-text"><%= recipe.description %></p>
+	    					<p class="card-text">created by: <a href="/users/<%= recipe.creator._id %>"><%= recipe.creator.username %></a></p>			
+							<h6 class="card-subtitle mb-2 text-muted">Category: <%= recipe.category %></h6>
+	  					</div>
+	  				</div> <!-- card -->
+  				</div> <!-- col -->
+			<% }) %> <!-- loop -->
+		</div> <!-- row row-cols-3 -->
+	</div> <!-- container -->
+<!-- recipes -->
+>>>>>>> 8d45552e6dbdbef8886ccb92b4ce0402bca6ae69
 	  	<div class="profile-card">
 	  		<div id="profile-picture">
 	  			<img src="https://i.pravatar.cc/150?u=">

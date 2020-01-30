@@ -67,7 +67,20 @@
 	            <a href="/users/<%= recipe.creator._id %>"><%= recipe.comments[i].author.username %> </a>
 	            @ 
 	            <%= recipe.comments[i].date.toLocaleString() %> 
-	            Rating: <%=recipe.comments[i].rating%>
+
+				<div class="stars">
+					<form action="">
+						<% for (let s = 5; s > 0; s--) { -%>
+							<% if (recipe.comments[i].rating === s) { -%>
+								<input class="star star-<% s %>" id="star-<% s %>" type="radio" disabled='disabled'name="star" checked/>
+							<% } else { -%>
+								<input class="star star-<% s %>" id="star-<% s %>" type="radio" disabled='disabled'name="star"/>	
+							<% } -%>
+							<label class="star star-<% s %>" for="star-<% s %>"></label>
+						<% } -%>
+					</form>
+				</div>
+
 	          </small>
 	          <br>
 	          <%= recipe.comments[i].text %>        
