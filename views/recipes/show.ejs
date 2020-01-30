@@ -1,58 +1,89 @@
 <%- include('../partials/header.ejs') %>
 
-	<h1>Recipe show page</h1>
-	<div id="recipe-container">
-	<!-- rating -->
-		<div class="stars">
-			<form action="">
-				<% for (let i = 5; i > 0; i--) { -%>
-					<% if (rating === i) { -%>
-						<input class="star star-<% i %>" id="star-<% i %>" type="radio" disabled='disabled'name="star" checked/>
-					<% } else { -%>
-						<input class="star star-<% i %>" id="star-<% i %>" type="radio" disabled='disabled'name="star"/>	
-					<% } -%>
-					<label class="star star-<% i %>" for="star-<% i %>"></label>
-				<% } -%>
-			</form>
-		</div>
-
-	<!-- end rating -->
-		<textarea disabled>
-			<%= recipe.ingredients %>
-		</textarea>
-		<textarea disabled>
-			<%= recipe.instructions %>
-		</textarea>	
-
-	<% if(loggedIn && userId == username) { %>
-		<a href="/recipes/<%= recipe._id %>/edit">Edit recipe</a> |
-		<form method="POST" action="/recipes/<%= recipe._id %>?_method=DELETE">
-			<button>Delete</button>
-  		</form>
-	<% } %>
-	</div>
+	<h1><%= recipe.name %></h1>
+	<div id="recipe-main-container">
+		<div id="recipe-first-container" class="row">
+			<div class="col">
+				<img  id="recipe-image" src="<%= recipe.imageUrl %>">
+			</div> <!-- recipe-container -->
+			<div id="recipe-ingredients" class="col">
+				<div id="recipe-information-star-container">
+					<div id="recipe-chef">
+						<i>foody</i> chef: <a href="/users/<%= recipe.creator._id %>" style="color:cadetblue;"><%= recipe.creator.username %></a>
+						<% if(loggedIn && recipe.creator.username == username) { %>
+							<div id="edit-delete-recipe">
+								<small>
+									<a href="/recipes/<%= recipe._id %>/edit">Edit</a> |
+								</small>
+								<small>
+									<form id="delete-form"method="POST" action="/recipes/<%= recipe._id %>?_method=DELETE">
+										<button id="recipe-delete">Delete</button>
+				  					</form>			
+								</small>						
+							</div>
+						<% } %>
+					</div>
+					<div id="recipe-show-star-average">
+						<h6><strong>Average rating: </strong></h6>
+					</div>
+					<!-- rating -->
+					<div id="recipe-showpage-stars" class="stars">
+						<form action="">
+							<% for (let i = 5; i > 0; i--) { -%>
+								<% if (rating === i) { -%>
+									<input class="star star-<% i %>" id="star-<% i %>" type="radio" disabled='disabled'name="star" checked/>
+								<% } else { -%>
+									<input class="star star-<% i %>" id="star-<% i %>" type="radio" disabled='disabled'name="star"/>	
+								<% } -%>
+								<label class="star star-<% i %>" for="star-<% i %>"></label>
+							<% } -%>
+						</form>
+					</div>
+					<!-- end rating -->			
+				</div> <!-- recipe-information-star-container -->
+				<div>
+					<h4>Ingredients</h4>
+					<% const ingredients = recipe.ingredients %>
+					<%- ingredients.replace(/,/g, '<br>') %>
+					<%= ingredients %>
+				</div>
+			</div> <!-- recipe-information -->
+		</div> <!-- recipe-first-container -->
+	</div> <!-- recipe-main-container -->
 
 	<hr>
 
-	  <h4>Discuss</h4>
-	  <% if(loggedIn) { %>
-		  <form method="POST" action="/comments/<%= recipe._id %>">
-		  	<label for="rating">Rate this recipe:</label>
+	<div id="recipe-second-container" class="row">
+		<div>
+			<h4>Instructions</h4>
+			<%= recipe.instructions %>
+		</div>
+	</div>	
 
-			<select name="rating" id="rating">
-			    <option value="0">0</option>
-			    <option value="1">1</option>
-			    <option value="2">2</option>
-			    <option value="3">3</option>
-			    <option value="4">4</option>
-			    <option value="5">5</option>
-			</select>
-		    <fieldset>
-				<label for="commentText">Comment:</label>
-		      	<textarea name="commentText" placeholder="enter comment here"></textarea>    
-		    </fieldset>
-		    <button>Add Comment</button>
-		  </form>
+	<hr>
+
+	<div id="recipe-third-container">
+	   <% if(loggedIn) { %>
+	   	<div id="add-comment-box">
+			  <form method="POST" action="/comments/<%= recipe._id %>">
+			  		<label for="rating"><strong>Rate this recipe:</strong></label>
+					<select name="rating" id="rating">
+					    <option value="0">0</option>
+					    <option value="1">1</option>
+					    <option value="2">2</option>
+					    <option value="3">3</option>
+					    <option value="4">4</option>
+					    <option value="5">5</option>
+					</select>
+			   	<fieldset>
+			   		<div>
+							<label for="commentText">Comment:</label>
+			   		</div>
+			     		<textarea rows="6" cols="100"name="commentText" placeholder="Enter comment here"></textarea>    
+			   	</fieldset>
+			   	<button class="btn btn-info">Add Comment</button>
+			   </form>
+	   	 </div>
 	<%} else { %>
 		<a href="" data-toggle="modal" data-target="#login-modal">Click here to log in and leave a comment.</a>
 
@@ -61,13 +92,11 @@
 	  <ul style="margin-top: 20px">
 	    <% for (let i = 0; i < recipe.comments.length; i++) { -%>
 	    <% recipe.comments.reverse() %>
-	      <li>
+	      <li id="comment-box">
 	        <p>
 	          <small>
-	            <a href="/users/<%= recipe.creator._id %>"><%= recipe.comments[i].author.username %> </a>
-	            @ 
-	            <%= recipe.comments[i].date.toLocaleString() %> 
-
+	            Posted on: <%= recipe.comments[i].date.toLocaleString().replace(/:\d{2}\s/,' ') %> | 
+	            <a href="/users/<%= recipe.creator._id %>" style="color:cadetblue;"><%= recipe.comments[i].author.username %></a>
 				<div class="stars">
 					<form action="">
 						<% for (let s = 5; s > 0; s--) { -%>
@@ -83,18 +112,21 @@
 
 	          </small>
 	          <br>
-	          <%= recipe.comments[i].text %>        
+	          <i>"<%= recipe.comments[i].text %>"</i>  
 	        </p>
 			<% if (loggedIn && recipe.comments[i].author.id === userId) { -%>
 	          <form method="POST" action="/comments/<%= recipe.id %>/<%= recipe.comments[i].id %>?_method=DELETE">
-	            <button>Delete</button>
+	          	<div id="delete-comment">
+		            <button class="btn btn-danger">Delete</button>	
+	          	</div>
 	          </form>
 	        <% } -%>
 	      </li>
 	    <% } -%>
 	  </ul>
+		
+	</div>
+
 	<hr>
-
-
 
 <%- include('../partials/footer.ejs') %>

@@ -1,13 +1,23 @@
 <%- include('./partials/header.ejs') %>
 
-	<div>
-		<img src="https://i.imgur.com/7kZx5q5.png" alt="foody logo">
-	</div>
-	<div id="home-search-container">
-		<form method="POST" action="/recipes/search">
-			<input id="home-page-searchbar" type="text" name="text" placeholder="Search for recipes">
-			<button id="home-search-button" class="btn btn-info">Search</button>
-		</form>	
+	<div id="homepage-bg">
+		<div>
+			<img src="https://i.imgur.com/7kZx5q5.png" alt="foody logo">
+		</div>
+		<div id="home-search-container">
+			<form method="POST" action="/recipes/search">
+				<input id="home-page-searchbar" type="text" name="text" placeholder="Search for recipes">
+				<button id="home-search-button" class="btn btn-info">Search</button>
+			</form>	
+		</div>	
 	</div>
 
+	<style type="text/css">
+		body {
+			background-image: url('https://st2.depositphotos.com/7904692/10860/i/950/depositphotos_108602562-stock-photo-vegetables-on-the-bottom-of.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+	</style>
 <%- include('./partials/footer.ejs') %>

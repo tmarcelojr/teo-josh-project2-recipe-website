@@ -22,7 +22,7 @@ router.post('/:recipeId', isLoggedIn, async (req, res, next) => {
 
     foundRecipe.comments.push(createdComment)
     await foundRecipe.save()
-    res.redirect('/recipes/' + foundRecipe._id)
+    res.redirect('back')
   } catch(err) {
     next(err)
   }

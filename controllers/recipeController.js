@@ -10,7 +10,10 @@ const loadRecipe = require('../lib/loadRecipe')
 // Index page
 router.get('/', async (req, res, next) => {
 	try {
-			const foundRecipes = await Recipe.find().populate('creator').populate('comment.rating')
+			const foundRecipes = await Recipe
+			.find()
+			.populate('creator')
+			.populate('comment.rating')
 
 			// foundRecipes.forEach(recipe => {
 			// 	recipe.rating = 5
@@ -52,7 +55,7 @@ router.post('/search', async (req, res, next) => {
 		])
 
 		res.render('recipes/index.ejs', {
-			recipe: foundRecipes,
+			recipes: foundRecipes,
 			dialogMessage: dialogMessage
 		})
 	} catch(err) {
@@ -92,7 +95,10 @@ router.post('/', async (req, res, next) => {
 // Show page
 router.get('/:id', async (req, res, next) => {
 	try {
-		const foundRecipe = await Recipe.findById(req.params.id).populate('comments.author')
+		const foundRecipe = await Recipe
+		.findById(req.params.id)
+		.populate('comments.author')
+		.populate('creator')
 
 		let sumRating = 0
 		let averageRating = 0

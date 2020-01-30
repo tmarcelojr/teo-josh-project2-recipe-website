@@ -115,6 +115,91 @@ label.star:before {
   font-family: FontAwesome;
 }
 
+/*===== NEW RECIPE PAGE =====*/
+
+#new-recipe-banner {
+  width: 100%;
+}
+
+/*===== RECIPE SHOW PAGE =====*/
+
+#recipe-main-container {
+  display: flex;
+}
+
+#recipe-first-container {
+  padding: 20px;
+  margin: 0 auto;
+  height: 650px;
+}
+
+#recipe-image {
+  width: 100%;
+}
+
+#recipe-second-container {
+  overflow: auto;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#recipe-third-container {
+  text-align: left;
+}
+
+#recipe-ingredients {
+  text-align: left;
+  width: 80%;
+  overflow: auto;
+  height: 100%;
+}
+
+#recipe-showpage-stars {
+  display: inline-block;
+  margin-left: -60px;
+}
+
+#recipe-chef {
+  display: inline-block;
+  font-size: 24px;
+}
+
+#recipe-information-star-container {
+  align-content: center;
+}
+
+#recipe-show-star-average {
+  margin-bottom: -30px;
+}
+
+#comment-box {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 20px 0px 0px -30px;
+  list-style-type: none;
+}
+
+#add-comment-box {
+  border: 1px solid black;
+  width: 99%;
+  padding: 10px;
+  margin: 10px;
+}
+
+#delete-comment {
+  text-align: right;
+}
+
+#edit-delete-recipe {
+  display: flex;
+  width: 100%;
+}
+
+#recipe-delete {
+  background: none;
+  border: none;
+  cursor: pointer; 
+}
 /*===== HOME PAGE =====*/
 
 #home-page-searchbar {
@@ -144,7 +229,7 @@ label.star:before {
 /*===== USER PROFILE PAGE =====*/
 
 #user-profile {
-  margin-bottom: 20px;
+  margin: 0 auto;
 }
 
 .profile-card {
@@ -153,7 +238,7 @@ label.star:before {
   margin: 0 auto;
   width: 280px;
   height: 660px;
-  background-color: #EFEDFF;;
+  background-color: #E4DECB;
   border-radius: 10px;
   box-shadow: 10px 10px 8px #888888;
 }
