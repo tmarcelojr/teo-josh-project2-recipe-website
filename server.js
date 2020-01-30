@@ -66,9 +66,8 @@ server.use('/comments', commentController)
 
 // Creating user data 
 server.get('/seed', (req, res) => {
-	const data = require('./createData.js')
-	// data.seedData()
-	
+	require('./createData.js')
+	res.send('ok')
 })
 
 // Recipe home page
